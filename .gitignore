@@ -1,0 +1,18 @@
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Scratch & Temporary Logs
+scratch/
+*.log
+*.tmp
+*.tgz
+__pycache__/
+
+# Raw Unprocessed Video & Stills Source Masters
+Images/
+REELS 2/
+TVC/
+portfolio/

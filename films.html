@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commercial Films & TVC — Charan Golkonda | Director of Photography</title>
+  <meta name="description" content="Cinematic commercial TVCs, sports brand campaigns, architectural films, and brand anthems shot by Director of Photography Charan Golkonda.">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Fragment+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css?v=2.5">
+</head>
+<body>
+
+  <!-- FLOATING NAVIGATION BAR -->
+  <header class="site-header">
+    <div class="nav-pill-wrapper">
+      <nav class="nav-bar">
+        <a href="index.html" class="brand-ident">
+          <span class="brand-logo-text">CHARAN GOLKONDA</span>
+          <span class="brand-role-badge">DOP &bull; 2.39:1</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">HOME</a></li>
+          <li><a href="films.html" class="nav-link active">FILMS / TVC</a></li>
+          <li><a href="verticals.html" class="nav-link">REELS</a></li>
+          <li><a href="photography.html" class="nav-link">STILLS</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-book" onclick="openInquiryModal()">
+            <span>WORK WITH ME</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileDrawer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <button class="mobile-close-btn" id="mobileDrawerClose" aria-label="Close menu">&times;</button>
+    <a href="index.html">HOME</a>
+    <a href="films.html" class="active">FILMS / TVC</a>
+    <a href="verticals.html">REELS</a>
+    <a href="photography.html">STILLS</a>
+    <a href="about.html">ABOUT</a>
+  </div>
+
+  <main class="container" style="padding-top: var(--band-hero); padding-bottom: var(--band-y);">
+    <!-- PAGE HEADER -->
+    <div class="section-header">
+      <div class="section-eyebrow">CINEMATOGRAPHY REPOSITORY // 2.39:1 &bull; 16:9</div>
+      <div class="section-title-row">
+        <div>
+          <h1 class="section-title">COMMERCIAL FILMS & TVC</h1>
+          <p class="section-desc">
+            National television commercials, high-velocity sports campaigns, architectural brand documentaries, and anthems. Segregated across culinary, sports, fashion, and architectural disciplines.
+          </p>
+        </div>
+        <div class="mono" style="font-size: 0.76rem; color: var(--text-dim); text-align: right;">
+          TOTAL ENTRIES: 20 COMMERCIAL FILMS<br>
+          SEGREGATED BY CATEGORY
+        </div>
+      </div>
+    </div>
+
+    <!-- CATEGORY FILTER TABS -->
+    <div class="filter-bar" id="filmFilters">
+      <button class="tab-btn active" data-filter="All">ALL WORKS (20)</button>
+      <button class="tab-btn" data-filter="Commercial TVC">COMMERCIAL TVC (10)</button>
+      <button class="tab-btn" data-filter="Sports TVC">SPORTS & ATHLETIC (4)</button>
+      <button class="tab-btn" data-filter="Architecture">ARCHITECTURE (6)</button>
+    </div>
+
+    <!-- FILMS GRID -->
+    <div class="films-grid" id="filmsGridContainer">
+      <!-- Injected via JavaScript with data-video hover attributes -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 style="font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 10px;">CHARAN GOLKONDA</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 380px; line-height: 1.6;">
+            Director of Photography and commercial photographer with 8 years of experience across TVCs, fashion, food and architecture. Based in Hyderabad, available to travel.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>CINEMA ARCHIVE</h5>
+          <ul>
+            <li><a href="films.html">Featured Commercials</a></li>
+            <li><a href="films.html">Sports & Action TVCs</a></li>
+            <li><a href="films.html">Architectural Films</a></li>
+            <li><a href="verticals.html">9:16 Vertical Cuts</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>STILLS & WORK</h5>
+          <ul>
+            <li><a href="photography.html">Fashion Editorial</a></li>
+            <li><a href="photography.html">Architectural Spaces</a></li>
+            <li><a href="photography.html">Commercial & Culinary</a></li>
+            <li><a href="photography.html">Product & Packaging</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>CONNECT</h5>
+          <ul>
+            <li><a href="mailto:charangolkonda@gmail.com">charangolkonda@gmail.com</a></li>
+            <li><a href="tel:+917337597128">+91-7337597128</a></li>
+            <li><a href="https://www.linkedin.com/in/charangolkonda/" target="_blank" rel="noopener">LinkedIn &nearr;</a></li>
+            <li><a href="https://www.instagram.com/charangolkonda/" target="_blank" rel="noopener">Instagram &nearr;</a></li>
+            <li><a href="https://www.behance.net/gscphotographhy" target="_blank" rel="noopener">Behance Portfolio &nearr;</a></li>
+            <li><a href="about.html#cv">Download CV &nearr;</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 CHARAN GOLKONDA. ALL RIGHTS RESERVED.</div>
+        <div>COORDINATES: 17.3850&deg; N, 78.4867&deg; E &bull; HYDERABAD, INDIA</div>
+        <div>DOP &bull; HYDERABAD, INDIA</div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- THEATER LIGHTBOX MODAL -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-dialog">
+      <button class="lightbox-close-btn" id="lightboxClose" aria-label="Close dialog">&times;</button>
+      <div class="lightbox-media-container" id="lightboxMedia"></div>
+      <div class="lightbox-info-pane">
+        <div class="lightbox-top-meta">
+          <span id="lightboxTag">CINEMATOGRAPHY</span>
+          <span id="lightboxYear">2024</span>
+        </div>
+        <h2 class="lightbox-title" id="lightboxTitle"></h2>
+        <p class="lightbox-desc" id="lightboxDesc"></p>
+        <div class="lightbox-specs-grid">
+          <div class="spec-node"><div class="spec-lbl">ROLE</div><div class="spec-val" id="specRole">Director of Photography</div></div>
+          <div class="spec-node"><div class="spec-lbl">CLIENT / CREDIT</div><div class="spec-val" id="specCredit">Client Credit</div></div>
+          <div class="spec-node"><div class="spec-lbl">CAMERA & LENS</div><div class="spec-val" id="specCamera">ARRI Alexa / Cooke</div></div>
+          <div class="spec-node"><div class="spec-lbl">FORMAT</div><div class="spec-val" id="specFormat">16:9 Cinema</div></div>
+          <div class="spec-node"><div class="spec-lbl">RELEASE</div><div class="spec-val" id="specYearNode">2024</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- INQUIRY MODAL -->
+  <div class="inquiry-modal" id="inquiryModal">
+    <div class="inquiry-dialog">
+      <button class="lightbox-close-btn" id="inquiryClose" aria-label="Close dialog">&times;</button>
+      <div class="section-eyebrow">GET IN TOUCH</div>
+      <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 6px;">LET'S WORK TOGETHER</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Tell me about your project or role and I'll get back to you soon.</p>
+      <form class="inquiry-form" onsubmit="handleInquirySubmit(event)">
+        <div class="form-group">
+          <label for="inquiryName">NAME / COMPANY</label>
+          <input type="text" id="inquiryName" name="name" required placeholder="e.g. Studio, Agency, or Production House">
+        </div>
+        <div class="form-group">
+          <label for="inquiryEmail">EMAIL</label>
+          <input type="email" id="inquiryEmail" name="email" required placeholder="director@studio.com">
+        </div>
+        <div class="form-group">
+          <label for="inquiryDiscipline">WHAT'S THIS FOR?</label>
+          <select id="inquiryDiscipline" name="discipline" required>
+            <option value="Commercial TVC">Commercial TVC / Brand Film</option>
+            <option value="Fashion Editorial">Fashion Editorial / Lookbook</option>
+            <option value="Architectural Film">Architectural & Interior Stills/Film</option>
+            <option value="Social Reel">Social Reel (9:16)</option>
+            <option value="Stills / Photography">Stills / Photography</option>
+            <option value="Full-time role / Other">Full-time role / Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inquiryMessage">PROJECT DETAILS</label>
+          <textarea id="inquiryMessage" name="message" rows="3" required placeholder="Dates, location, references, anything that helps."></textarea>
+        </div>
+        <button type="submit" class="form-submit-btn">SEND MESSAGE &rarr;</button>
+      </form>
+    </div>
+  </div>
+
+<!-- TOAST NOTIFICATION -->
+  <div class="toast-msg" id="toast">Copied to clipboard!</div>
+
+  <!-- JS SCRIPT -->
+  <script src="js/main.js?v=2.5"></script>
+  <script>
+    function openFilmModalById(id) {
+      const p = FEATURED_PROJECTS.find(item => item.id === id);
+      if (!p) return;
+      openVideoModal(p.video, p.cover, p.title, p.category.toUpperCase(), p.year, p.desc, p.category, "16:9 Widescreen", false);
+    }
+
+    function renderFilms(filter = "All") {
+      const container = document.getElementById("filmsGridContainer");
+      if (!container) return;
+
+      const filtered = filter === "All"
+        ? FEATURED_PROJECTS
+        : FEATURED_PROJECTS.filter(p => p.category.toLowerCase().includes(filter.toLowerCase()));
+
+      container.innerHTML = filtered.map(p => `
+        <article class="film-card" data-video="${p.video}" onclick="openFilmModalById('${p.id}')" tabindex="0" role="button" aria-label="Play ${p.title}">
+          <div class="film-media-wrap media-target">
+            <img class="film-poster" src="${p.cover}" alt="${p.title}" loading="lazy">
+            <span class="film-badge-float">${p.category}</span>
+            <div class="film-play-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>PLAY</span>
+            </div>
+          </div>
+          <div class="film-info-body">
+            <div class="film-title-row">
+              <h3>${p.title}</h3>
+              <span class="film-year">${p.year}</span>
+            </div>
+            <p class="film-desc">${p.desc}</p>
+            <div class="film-specs-footer">
+              <span style="color: var(--amber); letter-spacing: 0.08em;">ROLE: DOP &bull; ${p.year}</span>
+              <span>${p.client ? p.client.toUpperCase() : (p.camera ? p.camera.toUpperCase() : 'CINEMA')}</span>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      // Re-init video hover listeners on newly injected cards
+      initVideoHoverPreviews();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Check URL parameters (e.g. ?cat=Sports)
+      const params = new URLSearchParams(window.location.search);
+      const initialCat = params.get("cat") || "All";
+
+      document.querySelectorAll("#filmFilters .tab-btn").forEach(btn => {
+        if (btn.dataset.filter.toLowerCase() === initialCat.toLowerCase()) {
+          document.querySelectorAll("#filmFilters .tab-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+        }
+
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#filmFilters .tab-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderFilms(btn.dataset.filter);
+        });
+      });
+
+      renderFilms(initialCat);
+    });
+  </script>
+</body>
+</html>

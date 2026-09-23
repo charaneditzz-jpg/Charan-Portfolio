@@ -1,0 +1,11 @@
+{
+  "$schema": "hooks/antigravity-hooks.schema.json",
+  "enabled": true,
+  "PreToolUse": [
+    {
+      "matcher": "run_command",
+      "command": "python3 .agents/hooks/validate-tool-call.py",
+      "timeout": 10
+    }
+  ]
+}

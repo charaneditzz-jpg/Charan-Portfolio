@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charan Golkonda — Director of Photography, Hyderabad</title>
+  <meta name="description" content="Hyderabad-based Director of Photography with 8 years' experience shooting TVCs, fashion editorials, architectural films and vertical social campaigns.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  
+  <!-- Open Graph & Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Charan Golkonda — Director of Photography, Hyderabad">
+  <meta property="og:description" content="Hyderabad-based Director of Photography with 8 years' experience shooting TVCs, fashion editorials, architectural films and vertical social campaigns.">
+  <meta property="og:image" content="assets/og-preview.jpg">
+  <meta property="og:url" content="https://charangolkonda.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Charan Golkonda — Director of Photography, Hyderabad">
+  <meta name="twitter:description" content="Hyderabad-based Director of Photography with 8 years' experience shooting TVCs, fashion editorials, architectural films and vertical social campaigns.">
+  <meta name="twitter:image" content="assets/og-preview.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Fragment+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css?v=3.2">
+</head>
+<body>
+
+  <!-- DYNAMIC REVEAL NAVIGATION BAR (APPEARS WHEN SWIPING/SCROLLING DOWN FROM START) -->
+  <header class="site-header site-header-reveal" id="siteHeader">
+    <div class="nav-pill-wrapper">
+      <nav class="nav-bar">
+        <a href="index.html" class="brand-ident">
+          <span class="brand-logo-text">CHARAN GOLKONDA</span>
+          <span class="brand-role-badge">DOP &bull; 2.39:1</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">HOME</a></li>
+          <li><a href="films.html" class="nav-link">FILMS / TVC</a></li>
+          <li><a href="verticals.html" class="nav-link">REELS</a></li>
+          <li><a href="photography.html" class="nav-link">STILLS</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-book" onclick="openInquiryModal()">
+            <span>WORK WITH ME</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileDrawer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <button class="mobile-close-btn" id="mobileDrawerClose" aria-label="Close menu">&times;</button>
+    <a href="index.html" class="active">HOME</a>
+    <a href="films.html">FILMS / TVC</a>
+    <a href="verticals.html">REELS</a>
+    <a href="photography.html">STILLS</a>
+    <a href="about.html">ABOUT</a>
+    <a href="javascript:void(0)" onclick="closeMobileDrawer(); openInquiryModal();" style="color: var(--amber); font-weight:600;">WORK WITH ME &rarr;</a>
+  </div>
+
+  <main>
+    <!-- HERO ENTRY — FULLSCREEN CHARAN MASK WITH SHOWREEL -->
+    <section class="hero-cinema-entry" id="hero">
+      <h1 class="sr-only">Charan Golkonda — Director of Photography, Hyderabad</h1>
+      <div class="hero-stage">
+        <!-- Ambient atmospheric glow behind the transparent letters -->
+        <div class="hero-ambient"></div>
+
+        <!-- Video Playing Directly on Transparent CHARAN Letterforms -->
+        <div class="hero-mask-wrap" style="-webkit-mask-image: url('assets/hero/charan-mask@2x.png'); mask-image: url('assets/hero/charan-mask@2x.png'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-position: center; mask-position: center; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;">
+          <video class="hero-mask-video" src="assets/showreel/showreel.mp4" poster="assets/showreel/showreel-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+      </div>
+
+      <a href="#projects" class="hero-scroll-cue" aria-label="Scroll down to view projects">
+        <span class="hero-scroll-label">PROJECTS</span>
+        <svg class="hero-scroll-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 10l5 5 5-5"/></svg>
+      </a>
+    </section>
+
+    <!-- SELECTED PROJECTS SECTION -->
+    <section class="container" id="projects" style="padding-top: var(--band-y); padding-bottom: var(--band-y);">
+      <div class="section-header">
+        <div class="section-eyebrow">SELECTED WORK</div>
+        <div class="section-title-row">
+          <div>
+            <h2 class="section-title">PROJECTS</h2>
+            <p class="section-desc">TVCs and brand films I've shot as Director of Photography.</p>
+          </div>
+          <a href="films.html" class="view-all-link">
+            <span>See all films &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="films-grid">
+        <!-- Film 1: Zomoz -->
+        <article class="film-card" data-video="assets/tvc/tvc-zomoz-momos.mp4" onclick="openFilmModalById('tvc-17')" tabindex="0" role="button" aria-label="Play Zomoz Flavors of the Steamer commercial">
+          <div class="film-media-wrap media-target">
+            <img class="film-poster" src="assets/tvc/tvc-zomoz-momos.jpg" alt="Zomoz Commercial" loading="lazy">
+            <span class="film-badge-float">FOOD TVC</span>
+            <div class="film-play-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>PLAY</span>
+            </div>
+          </div>
+          <div class="film-info-body">
+            <div class="film-title-row">
+              <h3>Zomoz — Flavors of the Steamer</h3>
+              <span class="film-year">2024</span>
+            </div>
+            <p class="film-desc">High-energy food TVC for Zomoz Momos, built around sizzling pan-fries, rising steam and bold, colourful framing.</p>
+            <div class="film-specs-footer">
+              <span style="color: var(--amber); letter-spacing: 0.08em;">ROLE: DOP &bull; 2024</span>
+              <span>ZOMOZ / ARRI ALEXA MINI LF</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Film 2: Avon Cycles -->
+        <article class="film-card" data-video="assets/tvc/tvc-avon-cycle-klaasen.mp4" onclick="openFilmModalById('tvc-15')" tabindex="0" role="button" aria-label="Play Avon Cycles commercial">
+          <div class="film-media-wrap media-target">
+            <img class="film-poster" src="assets/tvc/tvc-avon-cycle-klaasen.jpg" alt="Avon Cycles Commercial" loading="lazy">
+            <span class="film-badge-float">SPORTS TVC</span>
+            <div class="film-play-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>PLAY</span>
+            </div>
+          </div>
+          <div class="film-info-body">
+            <div class="film-title-row">
+              <h3>Avon Cycles — Heinrich Klaasen Power Drive</h3>
+              <span class="film-year">2023</span>
+            </div>
+            <p class="film-desc">TVC for Avon Cycles starring cricketer Heinrich Klaasen, shot with dynamic tracking to match his power game.</p>
+            <div class="film-specs-footer">
+              <span style="color: var(--amber); letter-spacing: 0.08em;">ROLE: DOP &bull; 2023</span>
+              <span>AVON / SONY FX9 HIGH SPEED</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Film 3: Vrindavan -->
+        <article class="film-card" data-video="assets/tvc/tvc-vrindavan-luxury.mp4" onclick="openFilmModalById('tvc-16')" tabindex="0" role="button" aria-label="Play Vrindavan Luxury Residences film">
+          <div class="film-media-wrap media-target">
+            <img class="film-poster" src="assets/tvc/tvc-vrindavan-luxury.jpg" alt="Vrindavan Luxury" loading="lazy">
+            <span class="film-badge-float">ARCHITECTURE</span>
+            <div class="film-play-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>PLAY</span>
+            </div>
+          </div>
+          <div class="film-info-body">
+            <div class="film-title-row">
+              <h3>Vrindavan — Signature Luxury Residences</h3>
+              <span class="film-year">2022</span>
+            </div>
+            <p class="film-desc">Architectural film for Vrindavan's luxury residences, moving from twilight exteriors to open living spaces and soft natural light.</p>
+            <div class="film-specs-footer">
+              <span style="color: var(--amber); letter-spacing: 0.08em;">ROLE: DOP &bull; 2022</span>
+              <span>VRINDAVAN / ARRI AMIRA &bull; ZEISS</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Film 4: Trident Spaces -->
+        <article class="film-card" data-video="assets/tvc/tvc-trident-spaces.mp4" onclick="openFilmModalById('tvc-14')" tabindex="0" role="button" aria-label="Play Trident Spaces Corporate Architecture film">
+          <div class="film-media-wrap media-target">
+            <img class="film-poster" src="assets/tvc/tvc-trident-spaces.jpg" alt="Trident Spaces" loading="lazy">
+            <span class="film-badge-float">CORPORATE ARCH</span>
+            <div class="film-play-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>PLAY</span>
+            </div>
+          </div>
+          <div class="film-info-body">
+            <div class="film-title-row">
+              <h3>Trident Spaces — Next-Gen Corporate Architecture</h3>
+              <span class="film-year">2021</span>
+            </div>
+            <p class="film-desc">Corporate film on Trident Spaces' modern tech campus: clean facades, minimalist atriums and geometric daylight.</p>
+            <div class="film-specs-footer">
+              <span style="color: var(--amber); letter-spacing: 0.08em;">ROLE: DOP &bull; 2021</span>
+              <span>TRIDENT / RED V-RAPTOR 8K</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- REELS SPOTLIGHT (CURATED NATIVE 9:16) -->
+    <section class="container" style="padding-bottom: var(--band-y);">
+      <div class="section-header">
+        <div class="section-eyebrow">SOCIAL REELS &bull; 9:16</div>
+        <div class="section-title-row">
+          <div>
+            <h2 class="section-title">VERTICAL CINEMA</h2>
+            <p class="section-desc">Vertical films shot natively for Instagram and Reels, lit and framed for the phone screen.</p>
+          </div>
+          <a href="verticals.html" class="view-all-link">
+            <span>See all reels &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="verticals-grid">
+        <!-- Reel 1: Fashion -->
+        <div class="vertical-card" data-video="assets/shorts/reel-04-004_karani.mp4" onclick="openReelModalById('reel-4')" tabindex="0" role="button" aria-label="Play Karani Couture Reel">
+          <div class="media-target" style="position: absolute; inset: 0;">
+            <img class="vertical-poster" src="assets/shorts/reel-04-004_karani.jpg" alt="Karani Couture Reel" loading="lazy">
+          </div>
+          <div class="vertical-overlay"></div>
+          <span class="vertical-tag-pill">FASHION</span>
+          <div class="vertical-center-play">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <div class="vertical-footer-meta">
+            <h4>Karani Couture — Crimson Saree Elegance</h4>
+            <span class="vertical-duration">22s // 9:16</span>
+          </div>
+        </div>
+
+        <!-- Reel 2: Food -->
+        <div class="vertical-card" data-video="assets/shorts/reel-17-connection-reel-karafa-new.mp4" onclick="openReelModalById('reel-17')" tabindex="0" role="button" aria-label="Play Karafa Kitchens Reel">
+          <div class="media-target" style="position: absolute; inset: 0;">
+            <img class="vertical-poster" src="assets/shorts/reel-17-connection-reel-karafa-new.jpg" alt="Karafa Kitchens Reel" loading="lazy">
+          </div>
+          <div class="vertical-overlay"></div>
+          <span class="vertical-tag-pill">FOOD</span>
+          <div class="vertical-center-play">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <div class="vertical-footer-meta">
+            <h4>Karafa Kitchens — The Connection Reel</h4>
+            <span class="vertical-duration">28s // 9:16</span>
+          </div>
+        </div>
+
+        <!-- Reel 3: Food -->
+        <div class="vertical-card" data-video="assets/shorts/reel-01-001_hero-spice-red-chilli-powder.mp4" onclick="openReelModalById('reel-1')" tabindex="0" role="button" aria-label="Play Hero Spices Reel">
+          <div class="media-target" style="position: absolute; inset: 0;">
+            <img class="vertical-poster" src="assets/shorts/reel-01-001_hero-spice-red-chilli-powder.jpg" alt="Hero Spices Chilli Reel" loading="lazy">
+          </div>
+          <div class="vertical-overlay"></div>
+          <span class="vertical-tag-pill">FOOD</span>
+          <div class="vertical-center-play">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <div class="vertical-footer-meta">
+            <h4>Hero Spices — Red Chilli Powder Showcase</h4>
+            <span class="vertical-duration">18s // 9:16</span>
+          </div>
+        </div>
+
+        <!-- Reel 4: Food -->
+        <div class="vertical-card" data-video="assets/shorts/reel-18-continental-greenbird-s-chicken-like-nuggets-.mp4" onclick="openReelModalById('reel-18')" tabindex="0" role="button" aria-label="Play Greenbird Foods Reel">
+          <div class="media-target" style="position: absolute; inset: 0;">
+            <img class="vertical-poster" src="assets/shorts/reel-18-continental-greenbird-s-chicken-like-nuggets-.jpg" alt="Greenbird Nuggets Reel" loading="lazy">
+          </div>
+          <div class="vertical-overlay"></div>
+          <span class="vertical-tag-pill">FOOD</span>
+          <div class="vertical-center-play">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <div class="vertical-footer-meta">
+            <h4>Greenbird Foods — Crispy Plant Nuggets</h4>
+            <span class="vertical-duration">15s // 9:16</span>
+          </div>
+        </div>
+
+        <!-- Reel 5: Testimonial -->
+        <div class="vertical-card" data-video="assets/shorts/reel-14-bustterz-reel-3-testimonials.mp4" onclick="openReelModalById('reel-14')" tabindex="0" role="button" aria-label="Play Bustterz Stories Reel">
+          <div class="media-target" style="position: absolute; inset: 0;">
+            <img class="vertical-poster" src="assets/shorts/reel-14-bustterz-reel-3-testimonials.jpg" alt="Bustterz Stories Reel" loading="lazy">
+          </div>
+          <div class="vertical-overlay"></div>
+          <span class="vertical-tag-pill">TESTIMONIAL</span>
+          <div class="vertical-center-play">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <div class="vertical-footer-meta">
+            <h4>Bustterz Stories — Client Testimonials</h4>
+            <span class="vertical-duration">35s // 9:16</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GATEWAYS (EXPLORE DISCIPLINES) -->
+    <section class="container" style="padding-bottom: var(--band-y);">
+      <div class="gateways-grid">
+        <a href="films.html" class="gateway-card">
+          <div>
+            <div class="gateway-eyebrow">01 // FILMS</div>
+            <h3>COMMERCIAL FILMS & TVC</h3>
+            <p>TVCs, brand films and architectural walkthroughs.</p>
+          </div>
+          <div class="gateway-arrow">
+            <span>ENTER FILMS VAULT &rarr;</span>
+          </div>
+        </a>
+
+        <a href="verticals.html" class="gateway-card">
+          <div>
+            <div class="gateway-eyebrow">02 // REELS</div>
+            <h3>SOCIAL REELS</h3>
+            <p>Native 9:16 reels for fashion, food and brand campaigns.</p>
+          </div>
+          <div class="gateway-arrow">
+            <span>EXPLORE REELS &rarr;</span>
+          </div>
+        </a>
+
+        <a href="photography.html" class="gateway-card">
+          <div>
+            <div class="gateway-eyebrow">03 // STILLS</div>
+            <h3>PHOTOGRAPHY</h3>
+            <p>Fashion, architecture, food and product stills.</p>
+          </div>
+          <div class="gateway-arrow">
+            <span>VIEW STILLS GALLERY &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- CLIENT LOGO WALL -->
+    <section class="container" style="padding-bottom: var(--band-y);">
+      <div class="section-header">
+        <div class="section-eyebrow">CLIENTS & COLLABORATORS</div>
+        <div class="section-title-row">
+          <div>
+            <h2 class="section-title">BRANDS I'VE SHOT FOR</h2>
+            <p class="section-desc">Brands, fashion labels and studios I've worked with across India.</p>
+          </div>
+          <a href="about.html" class="view-all-link">
+            <span>See all clients &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div id="homeBrandsGrid">
+        <!-- Rendered with continuous sliding motion via js/main.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 style="font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 10px;">CHARAN GOLKONDA</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 380px; line-height: 1.6;">
+            Director of Photography and commercial photographer with 8 years of experience across TVCs, fashion, food and architecture. Based in Hyderabad, available to travel.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>CINEMA ARCHIVE</h5>
+          <ul>
+            <li><a href="films.html">Featured TVCs</a></li>
+            <li><a href="films.html?discipline=Sports">Sports & Action Films</a></li>
+            <li><a href="films.html?discipline=Architecture">Architectural Visuals</a></li>
+            <li><a href="verticals.html">Social Reels (9:16)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>STILLS & GALLERIES</h5>
+          <ul>
+            <li><a href="photography.html?cat=Fashion">Fashion Editorial</a></li>
+            <li><a href="photography.html?cat=Architecture">Architectural Spaces</a></li>
+            <li><a href="photography.html?cat=Food">Culinary & Hospitality</a></li>
+            <li><a href="photography.html?cat=Product">Product & Packaging</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>CONNECT</h5>
+          <ul>
+            <li><a href="mailto:charangolkonda@gmail.com">charangolkonda@gmail.com</a></li>
+            <li><a href="tel:+917337597128">+91-7337597128</a></li>
+            <li><a href="https://www.linkedin.com/in/charangolkonda/" target="_blank" rel="noopener">LinkedIn &nearr;</a></li>
+            <li><a href="https://www.instagram.com/charangolkonda/" target="_blank" rel="noopener">Instagram &nearr;</a></li>
+            <li><a href="https://www.behance.net/gscphotographhy" target="_blank" rel="noopener">Behance Portfolio &nearr;</a></li>
+            <li><a href="about.html#cv" onclick="openCVModal(event)">Download CV &nearr;</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 CHARAN GOLKONDA. ALL RIGHTS RESERVED.</div>
+        <div>DOP &bull; HYDERABAD, INDIA</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- THEATER LIGHTBOX MODAL -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-dialog">
+      <button class="lightbox-close-btn" id="lightboxClose" aria-label="Close dialog">&times;</button>
+      <div class="lightbox-media-container" id="lightboxMedia"></div>
+      <div class="lightbox-info-pane">
+        <div class="lightbox-top-meta">
+          <span id="lightboxTag">CINEMATOGRAPHY</span>
+          <span id="lightboxYear">2024</span>
+        </div>
+        <h2 class="lightbox-title" id="lightboxTitle"></h2>
+        <p class="lightbox-desc" id="lightboxDesc"></p>
+        <div class="lightbox-specs-grid">
+          <div class="spec-node"><div class="spec-lbl">ROLE</div><div class="spec-val" id="specRole">Director of Photography</div></div>
+          <div class="spec-node"><div class="spec-lbl">CLIENT / CREDIT</div><div class="spec-val" id="specCredit">Client Credit</div></div>
+          <div class="spec-node"><div class="spec-lbl">CAMERA & LENS</div><div class="spec-val" id="specCamera">ARRI Alexa / Cooke</div></div>
+          <div class="spec-node"><div class="spec-lbl">FORMAT</div><div class="spec-val" id="specFormat">16:9 Cinema</div></div>
+          <div class="spec-node"><div class="spec-lbl">RELEASE</div><div class="spec-val" id="specYearNode">2024</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INQUIRY MODAL -->
+  <div class="inquiry-modal" id="inquiryModal">
+    <div class="inquiry-dialog">
+      <button class="lightbox-close-btn" id="inquiryClose" aria-label="Close dialog">&times;</button>
+      <div class="section-eyebrow">GET IN TOUCH</div>
+      <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 6px;">LET'S WORK TOGETHER</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Tell me about your project or role and I'll get back to you soon.</p>
+      <form class="inquiry-form" onsubmit="handleInquirySubmit(event)">
+        <div class="form-group">
+          <label for="inquiryName">NAME / COMPANY</label>
+          <input type="text" id="inquiryName" name="name" required placeholder="e.g. Studio, Agency, or Production House">
+        </div>
+        <div class="form-group">
+          <label for="inquiryEmail">EMAIL</label>
+          <input type="email" id="inquiryEmail" name="email" required placeholder="director@studio.com">
+        </div>
+        <div class="form-group">
+          <label for="inquiryDiscipline">WHAT'S THIS FOR?</label>
+          <select id="inquiryDiscipline" name="discipline" required>
+            <option value="Commercial TVC">Commercial TVC / Brand Film</option>
+            <option value="Fashion Editorial">Fashion Editorial / Lookbook</option>
+            <option value="Architectural Film">Architectural & Interior Stills/Film</option>
+            <option value="Social Reel">Social Reel (9:16)</option>
+            <option value="Stills / Photography">Stills / Photography</option>
+            <option value="Full-time role / Other">Full-time role / Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inquiryMessage">PROJECT DETAILS</label>
+          <textarea id="inquiryMessage" name="message" rows="3" required placeholder="Dates, location, references, anything that helps."></textarea>
+        </div>
+        <button type="submit" class="form-submit-btn">SEND MESSAGE &rarr;</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-msg" id="toast">Copied to clipboard!</div>
+
+  <!-- JS SCRIPT -->
+  <script src="js/main.js?v=3.2"></script>
+</body>
+</html>
