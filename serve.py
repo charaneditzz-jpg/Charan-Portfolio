@@ -97,7 +97,7 @@ class QuietRangeHTTPRequestHandler(SimpleHTTPRequestHandler):
             except Exception as e:
                 sys.stderr.write(f"[Server] Failed to write inquiries.json: {e}\n")
 
-            # Forward to FormSubmit email delivery to charangolkonda@gmail.com
+            # Forward to FormSubmit email delivery to charaneditzz@gmail.com
             try:
                 forward_payload = json.dumps({
                     "name": name,
@@ -108,7 +108,7 @@ class QuietRangeHTTPRequestHandler(SimpleHTTPRequestHandler):
                     "_template": "table"
                 }).encode('utf-8')
                 req = urllib.request.Request(
-                    "https://formsubmit.co/ajax/charangolkonda@gmail.com",
+                    "https://formsubmit.co/ajax/charaneditzz@gmail.com",
                     data=forward_payload,
                     headers={
                         "Content-Type": "application/json",
@@ -118,7 +118,7 @@ class QuietRangeHTTPRequestHandler(SimpleHTTPRequestHandler):
                 )
                 with urllib.request.urlopen(req, timeout=5) as resp:
                     pass
-                print(f"[Server] Forwarded inquiry to email delivery for charangolkonda@gmail.com")
+                print(f"[Server] Forwarded inquiry to email delivery for charaneditzz@gmail.com")
             except Exception as e:
                 print(f"[Server] Email forward status: {e}")
 

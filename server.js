@@ -5,7 +5,7 @@
  * Features:
  * - HTTP 206 Partial Content / Byte-Range support for smooth video streaming
  * - Clean REST API endpoint: POST /api/contact
- * - Automated email forwarding to charangolkonda@gmail.com
+ * - Automated email forwarding to charaneditzz@gmail.com
  * - Local file persistence to inquiries.json
  */
 
@@ -52,7 +52,7 @@ function forwardToEmail(inquiry) {
     });
 
     const req = https.request(
-      "https://formsubmit.co/ajax/charangolkonda@gmail.com",
+      "https://formsubmit.co/ajax/charaneditzz@gmail.com",
       {
         method: "POST",
         headers: {
@@ -66,7 +66,7 @@ function forwardToEmail(inquiry) {
         let resBody = "";
         res.on("data", (chunk) => (resBody += chunk));
         res.on("end", () => {
-          console.log(`[Server] Email delivery forwarded to charangolkonda@gmail.com`);
+          console.log(`[Server] Email delivery forwarded to charaneditzz@gmail.com`);
           resolve(true);
         });
       }
@@ -239,6 +239,6 @@ server.listen(PORT, () => {
   console.log(`Charan Golkonda Portfolio Server active on:`);
   console.log(`http://localhost:${PORT}`);
   console.log(`Inquiry Endpoint: POST http://localhost:${PORT}/api/contact`);
-  console.log(`Target Email: charangolkonda@gmail.com`);
+  console.log(`Target Email: charaneditzz@gmail.com`);
   console.log(`=======================================================\n`);
 });

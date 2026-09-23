@@ -2,7 +2,7 @@ const https = require("https");
 
 /**
  * Netlify Serverless Function: /api/contact
- * Handles "Work With Me" inquiry submissions and delivers notifications to charangolkonda@gmail.com.
+ * Handles "Work With Me" inquiry submissions and delivers notifications to charaneditzz@gmail.com.
  */
 exports.handler = async function (event, context) {
   // CORS Preflight
@@ -61,7 +61,7 @@ exports.handler = async function (event, context) {
       try {
         const resendPayload = JSON.stringify({
           from: "Charan Portfolio <onboarding@resend.dev>",
-          to: ["charangolkonda@gmail.com"],
+          to: ["charaneditzz@gmail.com"],
           reply_to: email,
           subject: `Portfolio Inquiry: ${discipline} from ${name}`,
           text: `New Portfolio Inquiry\n\nName: ${name}\nEmail: ${email}\nDiscipline: ${discipline}\n\nProject Details:\n${message}\n\nTimestamp: ${new Date().toISOString()}`,
@@ -107,7 +107,7 @@ exports.handler = async function (event, context) {
       }
     }
 
-    // 2. Direct HTTPS Server-to-Server forward to FormSubmit email delivery to charangolkonda@gmail.com
+    // 2. Direct HTTPS Server-to-Server forward to FormSubmit email delivery to charaneditzz@gmail.com
     const formSubmitPayload = JSON.stringify({
       name: name,
       email: email,
@@ -120,7 +120,7 @@ exports.handler = async function (event, context) {
 
     await new Promise((resolve) => {
       const req = https.request(
-        "https://formsubmit.co/ajax/charangolkonda@gmail.com",
+        "https://formsubmit.co/ajax/charaneditzz@gmail.com",
         {
           method: "POST",
           headers: {

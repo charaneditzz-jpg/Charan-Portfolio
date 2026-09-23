@@ -12,7 +12,7 @@ const PROFILE = {
   title: "Director of Photography",
   location: "Hyderabad, India",
   coordinates: "17.3850° N, 78.4867° E",
-  email: "charangolkonda@gmail.com",
+  email: "charaneditzz@gmail.com",
   phone: "+91-7337597128",
   instagram: "https://www.instagram.com/charangolkonda/",
   linkedin: "https://www.linkedin.com/in/charangolkonda/",
@@ -1509,10 +1509,10 @@ window.handleInquirySubmit = async function(e) {
     console.warn("Direct /api/contact endpoint unavailable, falling back to email gateway:", err);
   }
 
-  // 2. Direct FormSubmit AJAX email gateway to charangolkonda@gmail.com
+  // 2. Direct FormSubmit AJAX email gateway to charaneditzz@gmail.com
   if (!sent) {
     try {
-      const res = await fetch("https://formsubmit.co/ajax/charangolkonda@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/charaneditzz@gmail.com", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -1542,7 +1542,7 @@ window.handleInquirySubmit = async function(e) {
     if (typeof closeInquiryModal === "function") closeInquiryModal();
   } else {
     // 3. Fallback to pre-filled mailto
-    const mailtoUri = `mailto:charangolkonda@gmail.com?subject=${encodeURIComponent("Portfolio Inquiry: " + discipline + " - " + name)}&body=${encodeURIComponent("Name / Company: " + name + "\nEmail: " + email + "\nDiscipline: " + discipline + "\n\nProject Details:\n" + message)}`;
+    const mailtoUri = `mailto:charaneditzz@gmail.com?subject=${encodeURIComponent("Portfolio Inquiry: " + discipline + " - " + name)}&body=${encodeURIComponent("Name / Company: " + name + "\nEmail: " + email + "\nDiscipline: " + discipline + "\n\nProject Details:\n" + message)}`;
     window.location.href = mailtoUri;
     showToast("Opening your email client to deliver message to Charan...");
     form.reset();
