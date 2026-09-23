@@ -1459,7 +1459,7 @@ window.handleInquirySubmit = async function(e) {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('button[type="submit"]');
-  const originalBtnText = btn ? btn.innerHTML : "SEND MESSAGE →";
+  const originalBtnText = btn ? btn.innerHTML : "SEND MESSAGE &rarr;";
   
   const nameInput = form.querySelector('[name="name"]') || form.querySelector('#inquiryName');
   const emailInput = form.querySelector('[name="email"]') || form.querySelector('#inquiryEmail');
@@ -1480,39 +1480,78 @@ window.handleInquirySubmit = async function(e) {
     btn.disabled = true;
     btn.innerHTML = "<span>SENDING MESSAGE...</span>";
   }
-  
+
+  const payload = {
+    name: name,
+    email: email,
+    discipline: discipline,
+    message: message,
+    _subject: `New Portfolio Inquiry: ${discipline} from ${name}`,
+    _replyto: email
+  };
+
+  let sent = false;
+
+  // 1. Try server endpoint (/api/contact - handles Netlify Functions or local server)
   try {
-    const res = await fetch("https://api.web3forms.com/submit", {
+    const res = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify({
-        access_key: "c46eaec7-c0e7-4ae9-a0a1-2d7ec55c65f9",
-        from_name: name,
-        email: email,
-        discipline: discipline,
-        message: message,
-        subject: `New Portfolio Inquiry: ${discipline} from ${name}`
-      })
+      body: JSON.stringify(payload)
     });
-    const data = await res.json();
-    if (data.success) {
-      showToast("Message sent successfully! Charan will respond shortly.");
-      form.reset();
-      closeInquiryModal();
-    } else {
-      throw new Error(data.message || "Failed");
+    if (res.ok) {
+      const data = await res.json().catch(() => ({}));
+      if (data.success !== false) {
+        sent = true;
+      }
     }
   } catch (err) {
+    console.warn("Direct /api/contact endpoint unavailable, falling back to email gateway:", err);
+  }
+
+  // 2. Direct FormSubmit AJAX email gateway to charangolkonda@gmail.com
+  if (!sent) {
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/charangolkonda@gmail.com", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json" 
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          discipline: discipline,
+          message: message,
+          _subject: `Portfolio Inquiry: ${discipline} from ${name}`,
+          _template: "table"
+        })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok || data.success === "true" || data.success === true) {
+        sent = true;
+      }
+    } catch (gatewayErr) {
+      console.warn("FormSubmit gateway error:", gatewayErr);
+    }
+  }
+
+  if (sent) {
+    showToast("Message sent successfully! Charan will respond shortly.");
+    form.reset();
+    if (typeof closeInquiryModal === "function") closeInquiryModal();
+  } else {
+    // 3. Fallback to pre-filled mailto
     const mailtoUri = `mailto:charangolkonda@gmail.com?subject=${encodeURIComponent("Portfolio Inquiry: " + discipline + " - " + name)}&body=${encodeURIComponent("Name / Company: " + name + "\nEmail: " + email + "\nDiscipline: " + discipline + "\n\nProject Details:\n" + message)}`;
     window.location.href = mailtoUri;
     showToast("Opening your email client to deliver message to Charan...");
     form.reset();
-    closeInquiryModal();
-  } finally {
-    if (btn) {
-      btn.disabled = false;
-      btn.innerHTML = originalBtnText;
-    }
+    if (typeof closeInquiryModal === "function") closeInquiryModal();
+  }
+
+  if (btn) {
+    btn.disabled = false;
+    btn.innerHTML = originalBtnText;
   }
 };
 

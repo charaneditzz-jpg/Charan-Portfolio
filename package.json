@@ -4,6 +4,8 @@
   "description": "Charan Golkonda - Cinematographer & Editorial Photographer Portfolio inspired by rowdy.co",
   "scripts": {
     "dev": "python3 serve.py",
-    "start": "python3 serve.py"
+    "start": "python3 serve.py",
+    "serve": "node server.js",
+    "server": "node server.js"
   }
 }

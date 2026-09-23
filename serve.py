@@ -3,9 +3,13 @@
 High-Performance Zero-Exception Multi-Threaded HTTP Server with HTTP 206 Byte Ranges.
 Specially tuned for video streaming in macOS Chrome and Safari without socket stalls.
 """
+import datetime
+import json
 import os
 import re
 import sys
+import urllib.parse
+import urllib.request
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from socketserver import ThreadingMixIn
 
@@ -40,6 +44,98 @@ class QuietRangeHTTPRequestHandler(SimpleHTTPRequestHandler):
             self.send_header('Pragma', 'no-cache')
             self.send_header('Expires', '0')
         super().end_headers()
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Accept')
+        self.send_header('Content-Length', '0')
+        self.end_headers()
+
+    def do_POST(self):
+        clean_path = self.path.split('?')[0].rstrip('/')
+        if clean_path in ('/api/contact', '/api/inquiry'):
+            content_length = int(self.headers.get('Content-Length', 0))
+            post_body = self.rfile.read(content_length).decode('utf-8', errors='replace')
+            
+            try:
+                data = json.loads(post_body)
+            except Exception:
+                data = dict(urllib.parse.parse_qsl(post_body))
+
+            name = data.get('name', '').strip()
+            email = data.get('email', '').strip()
+            discipline = data.get('discipline', 'Commercial Project').strip()
+            message = data.get('message', '').strip()
+
+            print(f"\n{'='*55}")
+            print(f"[WORK WITH ME INQUIRY RECEIVED]")
+            print(f"Time:       {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            print(f"Name:       {name}")
+            print(f"Email:      {email}")
+            print(f"Discipline: {discipline}")
+            print(f"Message:\n{message}")
+            print(f"{'='*55}\n")
+
+            # Persist to local inquiries log
+            try:
+                log_file = os.path.join(os.path.dirname(__file__), "inquiries.json")
+                entries = []
+                if os.path.exists(log_file):
+                    with open(log_file, "r", encoding="utf-8") as f:
+                        entries = json.load(f)
+                entries.append({
+                    "timestamp": datetime.datetime.now().isoformat(),
+                    "name": name,
+                    "email": email,
+                    "discipline": discipline,
+                    "message": message
+                })
+                with open(log_file, "w", encoding="utf-8") as f:
+                    json.dump(entries, f, indent=2)
+            except Exception as e:
+                sys.stderr.write(f"[Server] Failed to write inquiries.json: {e}\n")
+
+            # Forward to FormSubmit email delivery to charangolkonda@gmail.com
+            try:
+                forward_payload = json.dumps({
+                    "name": name,
+                    "email": email,
+                    "discipline": discipline,
+                    "message": message,
+                    "_subject": f"Portfolio Inquiry: {discipline} from {name}",
+                    "_template": "table"
+                }).encode('utf-8')
+                req = urllib.request.Request(
+                    "https://formsubmit.co/ajax/charangolkonda@gmail.com",
+                    data=forward_payload,
+                    headers={
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "User-Agent": "Charan-Portfolio-Server/1.0"
+                    }
+                )
+                with urllib.request.urlopen(req, timeout=5) as resp:
+                    pass
+                print(f"[Server] Forwarded inquiry to email delivery for charangolkonda@gmail.com")
+            except Exception as e:
+                print(f"[Server] Email forward status: {e}")
+
+            resp_data = json.dumps({
+                "success": True,
+                "message": "Message sent successfully! Charan will respond shortly."
+            }).encode('utf-8')
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Content-Length', str(len(resp_data)))
+            self.end_headers()
+            self.wfile.write(resp_data)
+            return
+
+        self.send_error(404, "Not Found")
 
     def do_GET(self):
         self.close_connection = True
