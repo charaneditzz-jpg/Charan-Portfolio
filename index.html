@@ -304,7 +304,7 @@
           <div>
             <div class="gateway-eyebrow">01 // FILMS</div>
             <h3>COMMERCIAL FILMS & TVC</h3>
-            <p>TVCs, brand films and architectural walkthroughs.</p>
+            <p id="gatewayFilmsDesc">Commercial TVCs across fashion, food, sports and real estate.</p>
           </div>
           <div class="gateway-arrow">
             <span>ENTER FILMS VAULT &rarr;</span>
@@ -315,7 +315,7 @@
           <div>
             <div class="gateway-eyebrow">02 // REELS</div>
             <h3>SOCIAL REELS</h3>
-            <p>Native 9:16 reels for fashion, food and brand campaigns.</p>
+            <p id="gatewayReelsDesc">Native 9:16 vertical cuts for fashion, food and brand campaigns.</p>
           </div>
           <div class="gateway-arrow">
             <span>EXPLORE REELS &rarr;</span>
@@ -326,7 +326,7 @@
           <div>
             <div class="gateway-eyebrow">03 // STILLS</div>
             <h3>PHOTOGRAPHY</h3>
-            <p>Fashion, architecture, food and product stills.</p>
+            <p id="gatewayStillsDesc">278 curated high-resolution master stills across fashion, spaces, food &amp; product.</p>
           </div>
           <div class="gateway-arrow">
             <span>VIEW STILLS GALLERY &rarr;</span>
@@ -369,19 +369,19 @@
         <div class="footer-col">
           <h5>CINEMA ARCHIVE</h5>
           <ul>
-            <li><a href="films.html">Featured TVCs</a></li>
-            <li><a href="films.html?discipline=Sports">Sports & Action Films</a></li>
-            <li><a href="films.html?discipline=Architecture">Architectural Visuals</a></li>
-            <li><a href="verticals.html">Social Reels (9:16)</a></li>
+            <li><a href="films.html#commercial">Brand TVCs</a></li>
+            <li><a href="films.html#sports">Sports & Action</a></li>
+            <li><a href="films.html#architecture">Architectural Films</a></li>
+            <li><a href="verticals.html">9:16 Social Reels</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>STILLS & GALLERIES</h5>
+          <h5>STILLS ARCHIVE</h5>
           <ul>
-            <li><a href="photography.html?cat=Fashion">Fashion Editorial</a></li>
-            <li><a href="photography.html?cat=Architecture">Architectural Spaces</a></li>
-            <li><a href="photography.html?cat=Food">Culinary & Hospitality</a></li>
-            <li><a href="photography.html?cat=Product">Product & Packaging</a></li>
+            <li><a href="photography.html#fashion">Fashion Editorial</a></li>
+            <li><a href="photography.html#architecture">Architectural Spaces</a></li>
+            <li><a href="photography.html#food">Culinary & Mixology</a></li>
+            <li><a href="photography.html#product">Product & Packaging</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -417,7 +417,7 @@
         <p class="lightbox-desc" id="lightboxDesc"></p>
         <div class="lightbox-specs-grid">
           <div class="spec-node"><div class="spec-lbl">ROLE</div><div class="spec-val" id="specRole">Director of Photography</div></div>
-          <div class="spec-node"><div class="spec-lbl">CLIENT / CREDIT</div><div class="spec-val" id="specCredit">Client Credit</div></div>
+          <div class="spec-node" id="specCreditNode"><div class="spec-lbl" id="specCreditLbl">CLIENT / BRAND</div><div class="spec-val" id="specCredit"></div></div>
           <div class="spec-node"><div class="spec-lbl">CAMERA & LENS</div><div class="spec-val" id="specCamera">ARRI Alexa / Cooke</div></div>
           <div class="spec-node"><div class="spec-lbl">FORMAT</div><div class="spec-val" id="specFormat">16:9 Cinema</div></div>
           <div class="spec-node"><div class="spec-lbl">RELEASE</div><div class="spec-val" id="specYearNode">2024</div></div>

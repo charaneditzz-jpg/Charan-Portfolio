@@ -103,19 +103,19 @@
         <div class="footer-col">
           <h5>CINEMA ARCHIVE</h5>
           <ul>
-            <li><a href="films.html">Featured Commercials</a></li>
-            <li><a href="films.html">Sports & Action TVCs</a></li>
-            <li><a href="films.html">Architectural Films</a></li>
-            <li><a href="verticals.html">9:16 Vertical Cuts</a></li>
+            <li><a href="films.html#commercial">Brand TVCs</a></li>
+            <li><a href="films.html#sports">Sports & Action</a></li>
+            <li><a href="films.html#architecture">Architectural Films</a></li>
+            <li><a href="verticals.html">9:16 Social Reels</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>STILLS & WORK</h5>
+          <h5>STILLS ARCHIVE</h5>
           <ul>
-            <li><a href="photography.html">Fashion Editorial</a></li>
-            <li><a href="photography.html">Architectural Spaces</a></li>
-            <li><a href="photography.html">Commercial & Culinary</a></li>
-            <li><a href="photography.html">Product & Packaging</a></li>
+            <li><a href="photography.html#fashion">Fashion Editorial</a></li>
+            <li><a href="photography.html#architecture">Architectural Spaces</a></li>
+            <li><a href="photography.html#food">Culinary & Mixology</a></li>
+            <li><a href="photography.html#product">Product & Packaging</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -152,7 +152,7 @@
         <p class="lightbox-desc" id="lightboxDesc"></p>
         <div class="lightbox-specs-grid">
           <div class="spec-node"><div class="spec-lbl">ROLE</div><div class="spec-val" id="specRole">Director of Photography</div></div>
-          <div class="spec-node"><div class="spec-lbl">CLIENT / CREDIT</div><div class="spec-val" id="specCredit">Client Credit</div></div>
+          <div class="spec-node" id="specCreditNode"><div class="spec-lbl" id="specCreditLbl">CLIENT / BRAND</div><div class="spec-val" id="specCredit"></div></div>
           <div class="spec-node"><div class="spec-lbl">CAMERA & LENS</div><div class="spec-val" id="specCamera">ARRI Alexa / Cooke</div></div>
           <div class="spec-node"><div class="spec-lbl">FORMAT</div><div class="spec-val" id="specFormat">16:9 Cinema</div></div>
           <div class="spec-node"><div class="spec-lbl">RELEASE</div><div class="spec-val" id="specYearNode">2024</div></div>
@@ -203,11 +203,6 @@
   <!-- JS SCRIPT -->
   <script src="js/main.js?v=2.5"></script>
   <script>
-    function openReelModalById(id) {
-      const s = SHORTS.find(item => item.id === id);
-      if (!s) return;
-      openVideoModal(s.video, s.cover, s.title, (s.tag || "REEL").toUpperCase(), s.duration, `Native 9:16 vertical commercial cut filed under ${s.tag}.`, s.tag, "9:16 Vertical", true);
-    }
 
     function renderVerticals(filter = "All") {
       const container = document.getElementById("verticalsGridContainer");
@@ -239,24 +234,46 @@
       if (typeof initCardAccessibility === "function") initCardAccessibility();
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+    function applyVerticalFilterFromUrl() {
+      const hash = (window.location.hash || "").replace(/^#/, "").trim().toLowerCase();
       const params = new URLSearchParams(window.location.search);
-      const initialCat = params.get("cat") || "All";
+      const target = hash || (params.get("cat") || "All").toLowerCase();
 
+      let matchedFilter = "All";
       document.querySelectorAll("#verticalFilters .tab-btn").forEach(btn => {
-        if (btn.dataset.filter.toLowerCase() === initialCat.toLowerCase()) {
-          document.querySelectorAll("#verticalFilters .tab-btn").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
+        const f = btn.dataset.filter.toLowerCase();
+        if (f === target || (target !== "all" && f.includes(target))) {
+          matchedFilter = btn.dataset.filter;
         }
+      });
 
+      document.querySelectorAll("#verticalFilters .tab-btn").forEach(b => {
+        const isActive = b.dataset.filter === matchedFilter;
+        b.classList.toggle("active", isActive);
+        b.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
+      renderVerticals(matchedFilter);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("#verticalFilters .tab-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-          document.querySelectorAll("#verticalFilters .tab-btn").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          renderVerticals(btn.dataset.filter);
+          const filter = btn.dataset.filter;
+          const hashVal = filter.toLowerCase();
+          history.replaceState(null, null, hashVal === "all" ? window.location.pathname : '#' + hashVal);
+
+          document.querySelectorAll("#verticalFilters .tab-btn").forEach(b => {
+            const isActive = b === btn;
+            b.classList.toggle("active", isActive);
+            b.setAttribute("aria-selected", isActive ? "true" : "false");
+          });
+          renderVerticals(filter);
         });
       });
 
-      renderVerticals(initialCat);
+      window.addEventListener("hashchange", applyVerticalFilterFromUrl);
+      applyVerticalFilterFromUrl();
     });
   </script>
 </body>

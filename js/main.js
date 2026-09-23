@@ -1289,7 +1289,7 @@ function openFilmModalById(id) {
     p.category,
     p.format || "16:9 Widescreen",
     false,
-    p.client ? `${p.client}${p.agency ? ' · ' + p.agency : ''}` : "Commercial Client",
+    p.client ? `${p.client}${p.agency ? ' · ' + p.agency : ''}` : "",
     p.camera ? `${p.camera}${p.lens ? ' · ' + p.lens : ''}` : "Cinema Package",
     p.role || "Director of Photography"
   );
@@ -1306,7 +1306,7 @@ window.openShowreelModal = function() {
     "Showreel",
     "2.39:1 CinemaScope",
     false,
-    "Commercial TVC & Brand Films",
+    "",
     "ARRI Alexa Mini LF · Cooke Anamorphic",
     "Director of Photography"
   );
@@ -1315,7 +1315,21 @@ window.openShowreelModal = function() {
 function openReelModalById(id) {
   const s = SHORTS.find(item => item.id === id);
   if (!s) return;
-  openVideoModal(s.video, s.cover, s.title, (s.tag || "REEL").toUpperCase(), s.duration, `Native 9:16 vertical commercial cut filed under ${s.tag}.`, s.tag, "9:16 Vertical", true);
+  const brandName = s.tag || (s.title.includes("—") ? s.title.split("—")[0].trim() : "");
+  openVideoModal(
+    s.video,
+    s.cover,
+    s.title,
+    (s.tag || "REEL").toUpperCase(),
+    s.duration,
+    s.desc || `Native 9:16 vertical commercial campaign cut for ${brandName || 'digital media'}.`,
+    s.tag || "Social Reel",
+    "9:16 Vertical",
+    true,
+    brandName,
+    "Sony FX3 / FX9 · G-Master",
+    "Director of Photography"
+  );
 }
 
 function openVideoModal(videoSrc, posterSrc, title, tag, year, desc, category, format, isVertical = false, client = "", camera = "", role = "Director of Photography") {
@@ -1331,7 +1345,9 @@ function openVideoModal(videoSrc, posterSrc, title, tag, year, desc, category, f
 
   const specRole = document.getElementById("specRole");
   const specCredit = document.getElementById("specCredit");
+  const specCreditLbl = document.getElementById("specCreditLbl");
   const specCamera = document.getElementById("specCamera");
+  const creditNode = specCredit ? (document.getElementById("specCreditNode") || specCredit.closest(".spec-node")) : null;
 
   if (lightboxTitle) lightboxTitle.textContent = title || "Cinematic Visual";
   if (lightboxTag) lightboxTag.textContent = (tag || category || "CINEMA").toUpperCase();
@@ -1341,7 +1357,18 @@ function openVideoModal(videoSrc, posterSrc, title, tag, year, desc, category, f
   if (specFormat) specFormat.textContent = format || (isVertical ? "9:16 Vertical" : "16:9 Cinema");
   if (specYear) specYear.textContent = year ? `${year}` : "2024";
   if (specRole) specRole.textContent = role;
-  if (specCredit) specCredit.textContent = client || "Client Commission";
+
+  // Real client / brand display logic (no literal placeholders)
+  const cleanClient = (client || "").trim();
+  if (cleanClient && cleanClient !== "Client Credit" && cleanClient !== "Client Commission") {
+    if (specCreditLbl) specCreditLbl.textContent = "CLIENT / BRAND";
+    if (specCredit) specCredit.textContent = cleanClient;
+    if (creditNode) creditNode.style.display = "";
+  } else {
+    if (creditNode) creditNode.style.display = "none";
+    if (specCredit) specCredit.textContent = "";
+  }
+
   if (specCamera) specCamera.textContent = camera || "ARRI Alexa / Cooke";
 
   lightboxModal.classList.add("open");
@@ -1362,9 +1389,23 @@ function openPhotoModal(src, title, category, project, cdnSrc) {
 
   const specRole = document.getElementById("specRole");
   const specCredit = document.getElementById("specCredit");
+  const specCreditLbl = document.getElementById("specCreditLbl");
   const specCamera = document.getElementById("specCamera");
+  const creditNode = specCredit ? (document.getElementById("specCreditNode") || specCredit.closest(".spec-node")) : null;
+
   if (specRole) specRole.textContent = "Director of Photography / Stills";
-  if (specCredit) specCredit.textContent = project || "Editorial Archive";
+
+  // Real project / series display logic (no literal placeholders)
+  const cleanProject = (project || "").trim();
+  if (cleanProject && cleanProject !== "Client Credit" && cleanProject !== "Editorial Archive") {
+    if (specCreditLbl) specCreditLbl.textContent = "PROJECT / SERIES";
+    if (specCredit) specCredit.textContent = cleanProject;
+    if (creditNode) creditNode.style.display = "";
+  } else {
+    if (creditNode) creditNode.style.display = "none";
+    if (specCredit) specCredit.textContent = "";
+  }
+
   if (specCamera) specCamera.textContent = "Digital / Medium Format";
 
   lightboxModal.classList.add("open");
@@ -1592,6 +1633,21 @@ function initScrollHeader() {
   onScroll();
 }
 
+function updateDynamicCounts() {
+  const stillsDesc = document.getElementById("gatewayStillsDesc");
+  if (stillsDesc && typeof ARCHIVE_PHOTOS !== "undefined") {
+    stillsDesc.textContent = `${ARCHIVE_PHOTOS.length} curated high-resolution master stills across fashion, spaces, food & product.`;
+  }
+  const reelsDesc = document.getElementById("gatewayReelsDesc");
+  if (reelsDesc && typeof SHORTS !== "undefined") {
+    reelsDesc.textContent = `${SHORTS.length} native 9:16 vertical cuts for fashion, food and brand campaigns.`;
+  }
+  const filmsDesc = document.getElementById("gatewayFilmsDesc");
+  if (filmsDesc && typeof FEATURED_PROJECTS !== "undefined") {
+    filmsDesc.textContent = `${FEATURED_PROJECTS.length} commercial TVCs across fashion, food, sports and real estate.`;
+  }
+}
+
 // Auto-run on DOM ready
 document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
@@ -1600,6 +1656,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCardAccessibility();
   initSmoothScroll();
   initVideoHoverPreviews();
+  updateDynamicCounts();
   renderBrandSliders("homeBrandsGrid");
   renderBrandSliders("aboutBrandsGrid");
 });

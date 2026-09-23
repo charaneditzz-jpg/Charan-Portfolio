@@ -37,3 +37,34 @@
   for = "/js/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Clean URL Rewrites & Redirects
+[[redirects]]
+  from = "/films"
+  to = "/films.html"
+  status = 200
+
+[[redirects]]
+  from = "/photography"
+  to = "/photography.html"
+  status = 200
+
+[[redirects]]
+  from = "/stills"
+  to = "/photography.html"
+  status = 301
+
+[[redirects]]
+  from = "/verticals"
+  to = "/verticals.html"
+  status = 200
+
+[[redirects]]
+  from = "/reels"
+  to = "/verticals.html"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200

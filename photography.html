@@ -66,7 +66,7 @@
             High-fashion editorial portraiture, architectural structures, fine culinary compositions, and minimalist studio product studies. Curated for gallery exhibition and high-end print lookbooks.
           </p>
         </div>
-        <div class="mono" style="font-size: 0.76rem; color: var(--text-dim); text-align: right;">
+        <div class="mono" id="totalStillsBadge" style="font-size: 0.76rem; color: var(--text-dim); text-align: right;">
           TOTAL STILLS: 278 CURATED FRAMES<br>
           EXPANDED BEHANCE & PORTFOLIO ARCHIVE
         </div>
@@ -74,16 +74,16 @@
     </div>
 
     <!-- CATEGORY FILTER TABS -->
-    <div class="filter-bar" id="photoFilters">
-      <button class="tab-btn active" data-filter="All">ALL STILLS (278)</button>
-      <button class="tab-btn" data-filter="Fashion">FASHION EDITORIAL (131)</button>
-      <button class="tab-btn" data-filter="Architecture">ARCHITECTURE & SPACES (73)</button>
-      <button class="tab-btn" data-filter="Food">CULINARY & MIXOLOGY (40)</button>
-      <button class="tab-btn" data-filter="Product">PRODUCT & PACKAGING (34)</button>
+    <div class="filter-bar" id="photoFilters" role="tablist" aria-label="Photography Categories">
+      <button class="tab-btn active" data-filter="All" role="tab" aria-selected="true">ALL STILLS (278)</button>
+      <button class="tab-btn" data-filter="Fashion" role="tab" aria-selected="false">FASHION EDITORIAL (131)</button>
+      <button class="tab-btn" data-filter="Architecture" role="tab" aria-selected="false">ARCHITECTURE & SPACES (73)</button>
+      <button class="tab-btn" data-filter="Food" role="tab" aria-selected="false">CULINARY & MIXOLOGY (40)</button>
+      <button class="tab-btn" data-filter="Product" role="tab" aria-selected="false">PRODUCT & PACKAGING (34)</button>
     </div>
 
     <!-- PHOTOS MASONRY GRID -->
-    <div class="photos-grid" id="photosGridContainer">
+    <div class="photos-grid" id="photosGridContainer" role="region" aria-live="polite">
       <!-- Injected via JavaScript -->
     </div>
   </main>
@@ -101,19 +101,19 @@
         <div class="footer-col">
           <h5>CINEMA ARCHIVE</h5>
           <ul>
-            <li><a href="films.html">Featured Commercials</a></li>
-            <li><a href="films.html">Sports & Action TVCs</a></li>
-            <li><a href="films.html">Architectural Films</a></li>
-            <li><a href="verticals.html">9:16 Vertical Cuts</a></li>
+            <li><a href="films.html#commercial">Brand TVCs</a></li>
+            <li><a href="films.html#sports">Sports & Action</a></li>
+            <li><a href="films.html#architecture">Architectural Films</a></li>
+            <li><a href="verticals.html">9:16 Social Reels</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>STILLS & WORK</h5>
+          <h5>STILLS ARCHIVE</h5>
           <ul>
-            <li><a href="photography.html">Fashion Editorial</a></li>
-            <li><a href="photography.html">Architectural Spaces</a></li>
-            <li><a href="photography.html">Commercial & Culinary</a></li>
-            <li><a href="photography.html">Product & Packaging</a></li>
+            <li><a href="photography.html#fashion">Fashion Editorial</a></li>
+            <li><a href="photography.html#architecture">Architectural Spaces</a></li>
+            <li><a href="photography.html#food">Culinary & Mixology</a></li>
+            <li><a href="photography.html#product">Product & Packaging</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -150,7 +150,7 @@
         <p class="lightbox-desc" id="lightboxDesc"></p>
         <div class="lightbox-specs-grid">
           <div class="spec-node"><div class="spec-lbl">ROLE</div><div class="spec-val" id="specRole">Director of Photography</div></div>
-          <div class="spec-node"><div class="spec-lbl">CLIENT / CREDIT</div><div class="spec-val" id="specCredit">Client Credit</div></div>
+          <div class="spec-node" id="specCreditNode"><div class="spec-lbl" id="specCreditLbl">PROJECT / SERIES</div><div class="spec-val" id="specCredit"></div></div>
           <div class="spec-node"><div class="spec-lbl">CAMERA & LENS</div><div class="spec-val" id="specCamera">ARRI Alexa / Cooke</div></div>
           <div class="spec-node"><div class="spec-lbl">FORMAT</div><div class="spec-val" id="specFormat">16:9 Cinema</div></div>
           <div class="spec-node"><div class="spec-lbl">RELEASE</div><div class="spec-val" id="specYearNode">2024</div></div>
@@ -201,13 +201,68 @@
   <!-- JS SCRIPT -->
   <script src="js/main.js?v=2.5"></script>
   <script>
+    function updatePhotoCategoryCounts() {
+      if (typeof ARCHIVE_PHOTOS === "undefined" || !ARCHIVE_PHOTOS.length) return;
+      const counts = {
+        all: ARCHIVE_PHOTOS.length,
+        fashion: 0,
+        architecture: 0,
+        food: 0,
+        product: 0
+      };
+      ARCHIVE_PHOTOS.forEach(p => {
+        const cat = (p.category || "").toLowerCase();
+        if (cat.includes("fashion")) counts.fashion++;
+        else if (cat.includes("arch") || cat.includes("space")) counts.architecture++;
+        else if (cat.includes("food") || cat.includes("culinary")) counts.food++;
+        else if (cat.includes("product") || cat.includes("packag")) counts.product++;
+      });
+
+      const totalBadge = document.getElementById("totalStillsBadge");
+      if (totalBadge) {
+        totalBadge.innerHTML = `TOTAL STILLS: ${counts.all} CURATED FRAMES<br>EXPANDED BEHANCE &amp; PORTFOLIO ARCHIVE`;
+      }
+
+      const btnAll = document.querySelector('#photoFilters .tab-btn[data-filter="All"]');
+      const btnFashion = document.querySelector('#photoFilters .tab-btn[data-filter="Fashion"]');
+      const btnArch = document.querySelector('#photoFilters .tab-btn[data-filter="Architecture"]');
+      const btnFood = document.querySelector('#photoFilters .tab-btn[data-filter="Food"]');
+      const btnProduct = document.querySelector('#photoFilters .tab-btn[data-filter="Product"]');
+
+      if (btnAll) btnAll.textContent = `ALL STILLS (${counts.all})`;
+      if (btnFashion) btnFashion.textContent = `FASHION EDITORIAL (${counts.fashion})`;
+      if (btnArch) btnArch.textContent = `ARCHITECTURE & SPACES (${counts.architecture})`;
+      if (btnFood) btnFood.textContent = `CULINARY & MIXOLOGY (${counts.food})`;
+      if (btnProduct) btnProduct.textContent = `PRODUCT & PACKAGING (${counts.product})`;
+    }
+
+    function normalizePhotoCat(catOrHash) {
+      if (!catOrHash) return "All";
+      const str = catOrHash.replace(/^#/, "").trim().toLowerCase();
+      if (str === "all") return "All";
+      if (str === "fashion" || str.includes("fashion")) return "Fashion";
+      if (str === "architecture" || str === "spaces" || str.includes("arch")) return "Architecture";
+      if (str === "food" || str === "culinary" || str.includes("food") || str.includes("mixology")) return "Food";
+      if (str === "product" || str === "packaging" || str.includes("product")) return "Product";
+      return "All";
+    }
+
     function renderPhotos(filter = "All") {
       const container = document.getElementById("photosGridContainer");
       if (!container) return;
 
-      const filtered = filter === "All"
+      const normFilter = normalizePhotoCat(filter);
+
+      const filtered = normFilter === "All"
         ? ARCHIVE_PHOTOS
-        : ARCHIVE_PHOTOS.filter(p => p.category.toLowerCase() === filter.toLowerCase() || p.category.toLowerCase().includes(filter.toLowerCase()));
+        : ARCHIVE_PHOTOS.filter(p => {
+            const cat = (p.category || "").toLowerCase();
+            if (normFilter === "Fashion") return cat.includes("fashion");
+            if (normFilter === "Architecture") return cat.includes("arch") || cat.includes("space");
+            if (normFilter === "Food") return cat.includes("food") || cat.includes("culinary");
+            if (normFilter === "Product") return cat.includes("product") || cat.includes("packag");
+            return cat.includes(normFilter.toLowerCase());
+          });
 
       container.innerHTML = filtered.map(p => `
         <div class="photo-card ${p.tall ? 'tall' : ''}" onclick="openPhotoModal('${p.src}', '${p.title.replace(/'/g, "\\'")}', '${p.category}', '${(p.project || '').replace(/'/g, "\\'")}', '${p.cdnSrc || ''}')" tabindex="0" role="button" aria-label="View ${p.title}">
@@ -219,27 +274,38 @@
         </div>
       `).join("");
 
+      // Update button active state & accessibility attributes
+      document.querySelectorAll("#photoFilters .tab-btn").forEach(btn => {
+        const bFilter = normalizePhotoCat(btn.dataset.filter);
+        const isActive = bFilter === normFilter;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
       if (typeof initCardAccessibility === "function") initCardAccessibility();
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+    function applyFilterFromUrl() {
+      const hash = window.location.hash;
       const params = new URLSearchParams(window.location.search);
-      const initialCat = params.get("cat") || "All";
+      const target = hash ? hash : (params.get("cat") || "All");
+      renderPhotos(target);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updatePhotoCategoryCounts();
 
       document.querySelectorAll("#photoFilters .tab-btn").forEach(btn => {
-        if (btn.dataset.filter.toLowerCase() === initialCat.toLowerCase()) {
-          document.querySelectorAll("#photoFilters .tab-btn").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-        }
-
         btn.addEventListener("click", () => {
-          document.querySelectorAll("#photoFilters .tab-btn").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          renderPhotos(btn.dataset.filter);
+          const filter = btn.dataset.filter;
+          const hashVal = filter.toLowerCase();
+          history.replaceState(null, null, hashVal === "all" ? window.location.pathname : '#' + hashVal);
+          renderPhotos(filter);
         });
       });
 
-      renderPhotos(initialCat);
+      window.addEventListener("hashchange", applyFilterFromUrl);
+      applyFilterFromUrl();
     });
   </script>
 </body>

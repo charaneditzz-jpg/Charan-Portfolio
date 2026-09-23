@@ -66,7 +66,7 @@
             National television commercials, high-velocity sports campaigns, architectural brand documentaries, and anthems. Segregated across culinary, sports, fashion, and architectural disciplines.
           </p>
         </div>
-        <div class="mono" style="font-size: 0.76rem; color: var(--text-dim); text-align: right;">
+        <div class="mono" id="totalFilmsBadge" style="font-size: 0.76rem; color: var(--text-dim); text-align: right;">
           TOTAL ENTRIES: 20 COMMERCIAL FILMS<br>
           SEGREGATED BY CATEGORY
         </div>
@@ -74,15 +74,15 @@
     </div>
 
     <!-- CATEGORY FILTER TABS -->
-    <div class="filter-bar" id="filmFilters">
-      <button class="tab-btn active" data-filter="All">ALL WORKS (20)</button>
-      <button class="tab-btn" data-filter="Commercial TVC">COMMERCIAL TVC (10)</button>
-      <button class="tab-btn" data-filter="Sports TVC">SPORTS & ATHLETIC (4)</button>
-      <button class="tab-btn" data-filter="Architecture">ARCHITECTURE (6)</button>
+    <div class="filter-bar" id="filmFilters" role="tablist" aria-label="Commercial Film Categories">
+      <button class="tab-btn active" data-filter="All" role="tab" aria-selected="true">ALL WORKS (20)</button>
+      <button class="tab-btn" data-filter="Commercial TVC" role="tab" aria-selected="false">COMMERCIAL TVC (10)</button>
+      <button class="tab-btn" data-filter="Sports TVC" role="tab" aria-selected="false">SPORTS & ATHLETIC (4)</button>
+      <button class="tab-btn" data-filter="Architecture" role="tab" aria-selected="false">ARCHITECTURE (6)</button>
     </div>
 
     <!-- FILMS GRID -->
-    <div class="films-grid" id="filmsGridContainer">
+    <div class="films-grid" id="filmsGridContainer" role="region" aria-live="polite">
       <!-- Injected via JavaScript with data-video hover attributes -->
     </div>
   </main>
@@ -100,19 +100,19 @@
         <div class="footer-col">
           <h5>CINEMA ARCHIVE</h5>
           <ul>
-            <li><a href="films.html">Featured Commercials</a></li>
-            <li><a href="films.html">Sports & Action TVCs</a></li>
-            <li><a href="films.html">Architectural Films</a></li>
-            <li><a href="verticals.html">9:16 Vertical Cuts</a></li>
+            <li><a href="films.html#commercial">Brand TVCs</a></li>
+            <li><a href="films.html#sports">Sports & Action</a></li>
+            <li><a href="films.html#architecture">Architectural Films</a></li>
+            <li><a href="verticals.html">9:16 Social Reels</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>STILLS & WORK</h5>
+          <h5>STILLS ARCHIVE</h5>
           <ul>
-            <li><a href="photography.html">Fashion Editorial</a></li>
-            <li><a href="photography.html">Architectural Spaces</a></li>
-            <li><a href="photography.html">Commercial & Culinary</a></li>
-            <li><a href="photography.html">Product & Packaging</a></li>
+            <li><a href="photography.html#fashion">Fashion Editorial</a></li>
+            <li><a href="photography.html#architecture">Architectural Spaces</a></li>
+            <li><a href="photography.html#food">Culinary & Mixology</a></li>
+            <li><a href="photography.html#product">Product & Packaging</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -149,7 +149,7 @@
         <p class="lightbox-desc" id="lightboxDesc"></p>
         <div class="lightbox-specs-grid">
           <div class="spec-node"><div class="spec-lbl">ROLE</div><div class="spec-val" id="specRole">Director of Photography</div></div>
-          <div class="spec-node"><div class="spec-lbl">CLIENT / CREDIT</div><div class="spec-val" id="specCredit">Client Credit</div></div>
+          <div class="spec-node" id="specCreditNode"><div class="spec-lbl" id="specCreditLbl">CLIENT / BRAND</div><div class="spec-val" id="specCredit"></div></div>
           <div class="spec-node"><div class="spec-lbl">CAMERA & LENS</div><div class="spec-val" id="specCamera">ARRI Alexa / Cooke</div></div>
           <div class="spec-node"><div class="spec-lbl">FORMAT</div><div class="spec-val" id="specFormat">16:9 Cinema</div></div>
           <div class="spec-node"><div class="spec-lbl">RELEASE</div><div class="spec-val" id="specYearNode">2024</div></div>
@@ -203,16 +203,78 @@
     function openFilmModalById(id) {
       const p = FEATURED_PROJECTS.find(item => item.id === id);
       if (!p) return;
-      openVideoModal(p.video, p.cover, p.title, p.category.toUpperCase(), p.year, p.desc, p.category, "16:9 Widescreen", false);
+      openVideoModal(
+        p.video,
+        p.cover,
+        p.title,
+        (p.category || "COMMERCIAL").toUpperCase(),
+        p.year,
+        p.desc,
+        p.category,
+        p.format || "16:9 Widescreen",
+        false,
+        p.client ? `${p.client}${p.agency ? ' · ' + p.agency : ''}` : "",
+        p.camera ? `${p.camera}${p.lens ? ' · ' + p.lens : ''}` : "Cinema Package",
+        p.role || "Director of Photography"
+      );
+    }
+
+    function updateFilmCategoryCounts() {
+      if (typeof FEATURED_PROJECTS === "undefined" || !FEATURED_PROJECTS.length) return;
+      const counts = {
+        all: FEATURED_PROJECTS.length,
+        commercial: 0,
+        sports: 0,
+        architecture: 0
+      };
+      FEATURED_PROJECTS.forEach(p => {
+        const cat = (p.category || "").toLowerCase();
+        if (cat.includes("sport") || cat.includes("action")) counts.sports++;
+        else if (cat.includes("arch") || cat.includes("space")) counts.architecture++;
+        else counts.commercial++;
+      });
+
+      const totalBadge = document.getElementById("totalFilmsBadge");
+      if (totalBadge) {
+        totalBadge.innerHTML = `TOTAL ENTRIES: ${counts.all} COMMERCIAL FILMS<br>SEGREGATED BY CATEGORY`;
+      }
+
+      const btnAll = document.querySelector('#filmFilters .tab-btn[data-filter="All"]');
+      const btnComm = document.querySelector('#filmFilters .tab-btn[data-filter="Commercial TVC"]');
+      const btnSports = document.querySelector('#filmFilters .tab-btn[data-filter="Sports TVC"]');
+      const btnArch = document.querySelector('#filmFilters .tab-btn[data-filter="Architecture"]');
+
+      if (btnAll) btnAll.textContent = `ALL WORKS (${counts.all})`;
+      if (btnComm) btnComm.textContent = `COMMERCIAL TVC (${counts.commercial})`;
+      if (btnSports) btnSports.textContent = `SPORTS & ATHLETIC (${counts.sports})`;
+      if (btnArch) btnArch.textContent = `ARCHITECTURE (${counts.architecture})`;
+    }
+
+    function normalizeFilmCat(catOrHash) {
+      if (!catOrHash) return "All";
+      const str = catOrHash.replace(/^#/, "").trim().toLowerCase();
+      if (str === "all") return "All";
+      if (str.includes("comm") || str === "brand") return "Commercial TVC";
+      if (str.includes("sport") || str.includes("action") || str.includes("athletic")) return "Sports TVC";
+      if (str.includes("arch") || str.includes("space") || str.includes("estate")) return "Architecture";
+      return "All";
     }
 
     function renderFilms(filter = "All") {
       const container = document.getElementById("filmsGridContainer");
       if (!container) return;
 
-      const filtered = filter === "All"
+      const normFilter = normalizeFilmCat(filter);
+
+      const filtered = normFilter === "All"
         ? FEATURED_PROJECTS
-        : FEATURED_PROJECTS.filter(p => p.category.toLowerCase().includes(filter.toLowerCase()));
+        : FEATURED_PROJECTS.filter(p => {
+            const cat = (p.category || "").toLowerCase();
+            if (normFilter === "Commercial TVC") return cat.includes("comm") || (!cat.includes("sport") && !cat.includes("arch"));
+            if (normFilter === "Sports TVC") return cat.includes("sport") || cat.includes("action");
+            if (normFilter === "Architecture") return cat.includes("arch") || cat.includes("space");
+            return cat.includes(normFilter.toLowerCase());
+          });
 
       container.innerHTML = filtered.map(p => `
         <article class="film-card" data-video="${p.video}" onclick="openFilmModalById('${p.id}')" tabindex="0" role="button" aria-label="Play ${p.title}">
@@ -238,29 +300,40 @@
         </article>
       `).join("");
 
+      // Update button active state & accessibility attributes
+      document.querySelectorAll("#filmFilters .tab-btn").forEach(btn => {
+        const bFilter = normalizeFilmCat(btn.dataset.filter);
+        const isActive = bFilter === normFilter;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
       // Re-init video hover listeners on newly injected cards
       initVideoHoverPreviews();
+      if (typeof initCardAccessibility === "function") initCardAccessibility();
+    }
+
+    function applyFilmFilterFromUrl() {
+      const hash = window.location.hash;
+      const params = new URLSearchParams(window.location.search);
+      const target = hash ? hash : (params.get("cat") || params.get("discipline") || "All");
+      renderFilms(target);
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Check URL parameters (e.g. ?cat=Sports)
-      const params = new URLSearchParams(window.location.search);
-      const initialCat = params.get("cat") || "All";
+      updateFilmCategoryCounts();
 
       document.querySelectorAll("#filmFilters .tab-btn").forEach(btn => {
-        if (btn.dataset.filter.toLowerCase() === initialCat.toLowerCase()) {
-          document.querySelectorAll("#filmFilters .tab-btn").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-        }
-
         btn.addEventListener("click", () => {
-          document.querySelectorAll("#filmFilters .tab-btn").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          renderFilms(btn.dataset.filter);
+          const filter = btn.dataset.filter;
+          const hashVal = filter.toLowerCase().replace(/\s+/g, '-');
+          history.replaceState(null, null, filter === "All" ? window.location.pathname : '#' + hashVal);
+          renderFilms(filter);
         });
       });
 
-      renderFilms(initialCat);
+      window.addEventListener("hashchange", applyFilmFilterFromUrl);
+      applyFilmFilterFromUrl();
     });
   </script>
 </body>
