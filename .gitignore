@@ -12,7 +12,7 @@ scratch/
 __pycache__/
 
 # Raw Unprocessed Video & Stills Source Masters
-Images/
-REELS 2/
-TVC/
-portfolio/
+/Images/
+/REELS 2/
+/TVC/
+/portfolio/
