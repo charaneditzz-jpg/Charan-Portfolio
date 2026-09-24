@@ -72,7 +72,6 @@
   <main>
     <!-- HERO ENTRY — FULLSCREEN CHARAN MASK WITH SHOWREEL -->
     <section class="hero-cinema-entry" id="hero">
-      <h1 class="sr-only">Charan Golkonda — Director of Photography, Hyderabad</h1>
       <div class="hero-stage">
         <!-- Ambient atmospheric glow behind the transparent letters -->
         <div class="hero-ambient"></div>
@@ -83,20 +82,60 @@
         </div>
       </div>
 
-      <a href="#projects" class="hero-scroll-cue" aria-label="Scroll down to view projects">
-        <span class="hero-scroll-label">PROJECTS</span>
+      <div class="hero-content-wrap">
+        <h1 class="hero-statement">I'm a Director of Photography, trained across every format that matters.</h1>
+        <p class="hero-substatement">8 years shooting TVCs, fashion, food and architecture — self-taught, camera to color, one discipline at a time.</p>
+        <div class="hero-actions-row">
+          <button class="hero-btn-primary" onclick="openShowreelModal()" aria-label="Watch my showreel">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>Watch my showreel</span>
+          </button>
+          <button class="hero-btn-secondary" onclick="openInquiryModal()" aria-label="Start a project">
+            <span>Start a project</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <a href="#why-me" class="hero-scroll-cue" aria-label="Scroll down to why work with me">
+        <span class="hero-scroll-label">EXPLORE</span>
         <svg class="hero-scroll-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 10l5 5 5-5"/></svg>
       </a>
     </section>
 
-    <!-- SELECTED PROJECTS SECTION -->
-    <section class="container" id="projects" style="padding-top: var(--band-y); padding-bottom: var(--band-y);">
+    <!-- WHY WORK WITH ME -->
+    <section class="container" id="why-me" style="padding-top: var(--band-y); padding-bottom: calc(var(--band-y) * 0.75);">
       <div class="section-header">
-        <div class="section-eyebrow">SELECTED WORK</div>
+        <div class="section-eyebrow">WHY WORK WITH ME</div>
+        <h2 class="section-title">RANGE, BUILT ON PURPOSE</h2>
+      </div>
+      <p class="why-body-lead">
+        I never picked one genre and stayed in it. Over 8 years I taught myself to shoot commercial TVCs, fashion editorials, food campaigns, architectural films and native vertical content each one learned properly, not picked up on the side. That range means I show up already knowing how to light a dish, frame a building, or direct a model, whatever your brief calls for.
+      </p>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-num">01 // DISCIPLINE BY DISCIPLINE</div>
+          <p>I taught myself discipline by discipline TVC lighting, food styling angles, architectural composition, fashion direction each learned in depth, on my own</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">02 // ACROSS EVERY FORMAT</div>
+          <p>One eye across every format cinema, stills and 9:16 social, shot to the same standard</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">03 // ZERO LEARNING CURVE</div>
+          <p>No learning curve on your shoot chances are I've already shot something close to your brief</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED PROJECTS SECTION -->
+    <section class="container" id="projects" style="padding-top: calc(var(--band-y) * 0.5); padding-bottom: var(--band-y);">
+      <div class="section-header">
+        <div class="section-eyebrow">ACROSS EVERY FORMAT</div>
         <div class="section-title-row">
           <div>
-            <h2 class="section-title">PROJECTS</h2>
-            <p class="section-desc">TVCs and brand films I've shot as Director of Photography.</p>
+            <h2 class="section-title">SELECTED FILMS</h2>
+            <p class="section-desc">TVCs and brand films I've shot across food, sport, architecture and fashion different genres, same standard of light.</p>
           </div>
           <a href="films.html" class="view-all-link">
             <span>See all films &rarr;</span>
@@ -122,8 +161,8 @@
             </div>
             <p class="film-desc">High-energy food TVC for Zomoz Momos, built around sizzling pan-fries, rising steam and bold, colourful framing.</p>
             <div class="film-specs-footer">
-              <span style="color: var(--amber); letter-spacing: 0.08em;">ROLE: DOP &bull; 2024</span>
-              <span>ZOMOZ / ARRI ALEXA MINI LF</span>
+              <span style="color: var(--amber); letter-spacing: 0.08em;">ROLE: DOP &bull; 2023</span>
+              <span>ZOMOZ</span>
             </div>
           </div>
         </article>
@@ -169,7 +208,7 @@
             <p class="film-desc">Architectural film for Vrindavan's luxury residences, moving from twilight exteriors to open living spaces and soft natural light.</p>
             <div class="film-specs-footer">
               <span style="color: var(--amber); letter-spacing: 0.08em;">ROLE: DOP &bull; 2022</span>
-              <span>VRINDAVAN / ARRI AMIRA &bull; ZEISS</span>
+              <span>VRINDAVAN</span>
             </div>
           </div>
         </article>
@@ -192,7 +231,7 @@
             <p class="film-desc">Corporate film on Trident Spaces' modern tech campus: clean facades, minimalist atriums and geometric daylight.</p>
             <div class="film-specs-footer">
               <span style="color: var(--amber); letter-spacing: 0.08em;">ROLE: DOP &bull; 2021</span>
-              <span>TRIDENT / RED V-RAPTOR 8K</span>
+              <span>TRIDENT</span>
             </div>
           </div>
         </article>
@@ -202,11 +241,11 @@
     <!-- REELS SPOTLIGHT (CURATED NATIVE 9:16) -->
     <section class="container" style="padding-bottom: var(--band-y);">
       <div class="section-header">
-        <div class="section-eyebrow">SOCIAL REELS &bull; 9:16</div>
+        <div class="section-eyebrow">BUILT FOR THE FEED</div>
         <div class="section-title-row">
           <div>
             <h2 class="section-title">VERTICAL CINEMA</h2>
-            <p class="section-desc">Vertical films shot natively for Instagram and Reels, lit and framed for the phone screen.</p>
+            <p class="section-desc">Reels I shoot natively for 9:16, across fashion, food and brand campaigns — framed for the phone from the first frame, not cropped down from something bigger.</p>
           </div>
           <a href="verticals.html" class="view-all-link">
             <span>See all reels &rarr;</span>
@@ -302,9 +341,9 @@
       <div class="gateways-grid">
         <a href="films.html" class="gateway-card">
           <div>
-            <div class="gateway-eyebrow">01 // FILMS</div>
-            <h3>COMMERCIAL FILMS & TVC</h3>
-            <p id="gatewayFilmsDesc">Commercial TVCs across fashion, food, sports and real estate.</p>
+            <div class="gateway-eyebrow">01 // FILMS &mdash; COMMERCIAL FILMS &amp; TVC</div>
+            <h3>COMMERCIAL FILMS &amp; TVC</h3>
+            <p id="gatewayFilmsDesc">TVCs and brand films across fashion, food, sport and architecture.</p>
           </div>
           <div class="gateway-arrow">
             <span>ENTER FILMS VAULT &rarr;</span>
@@ -313,9 +352,9 @@
 
         <a href="verticals.html" class="gateway-card">
           <div>
-            <div class="gateway-eyebrow">02 // REELS</div>
+            <div class="gateway-eyebrow">02 // REELS &mdash; SOCIAL REELS</div>
             <h3>SOCIAL REELS</h3>
-            <p id="gatewayReelsDesc">Native 9:16 vertical cuts for fashion, food and brand campaigns.</p>
+            <p id="gatewayReelsDesc">Native 9:16 cuts for fashion, food and brand campaigns.</p>
           </div>
           <div class="gateway-arrow">
             <span>EXPLORE REELS &rarr;</span>
@@ -324,9 +363,9 @@
 
         <a href="photography.html" class="gateway-card">
           <div>
-            <div class="gateway-eyebrow">03 // STILLS</div>
+            <div class="gateway-eyebrow">03 // STILLS &mdash; PHOTOGRAPHY</div>
             <h3>PHOTOGRAPHY</h3>
-            <p id="gatewayStillsDesc">278 curated high-resolution master stills across fashion, spaces, food &amp; product.</p>
+            <p id="gatewayStillsDesc">278 curated stills across fashion, spaces, food and product.</p>
           </div>
           <div class="gateway-arrow">
             <span>VIEW STILLS GALLERY &rarr;</span>
@@ -363,7 +402,7 @@
         <div class="footer-col">
           <h4 style="font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 10px;">CHARAN GOLKONDA</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 380px; line-height: 1.6;">
-            Director of Photography and commercial photographer with 8 years of experience across TVCs, fashion, food and architecture. Based in Hyderabad, available to travel.
+            I shoot Director of Photography work across TVC, fashion, food and architecture. Self-taught, format by format. Based in Hyderabad, available to travel.
           </p>
         </div>
         <div class="footer-col">
@@ -431,7 +470,8 @@
     <div class="inquiry-dialog">
       <button class="lightbox-close-btn" id="inquiryClose" aria-label="Close dialog">&times;</button>
       <div class="section-eyebrow">GET IN TOUCH</div>
-      <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 6px;">LET'S WORK TOGETHER</h3>
+      <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 6px;">LET'S SHOOT SOMETHING</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">Whatever the format — TVC, editorial, food, architecture or social — tell me about your project and I'll get back to you within a day.</p>
       <form class="inquiry-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleInquirySubmit(event)">
         <input type="hidden" name="form-name" value="inquiry">
         <p style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>

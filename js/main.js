@@ -120,14 +120,14 @@ const FEATURED_PROJECTS = [
   },
   {
     "id": "tvc-7",
-    "title": "Royal Jewels \u2014 Daughter D1 Heirloom Cut",
+    "title": "Abhi Eggs — Wholesome Family Breakfast",
     "category": "Commercial TVC",
     "discipline": "Commercial",
     "year": "2021",
     "cover": "assets/tvc/tvc-07-daughter-d1.jpg",
     "video": "assets/tvc/tvc-07-daughter-d1.mp4",
-    "desc": "Emotionally resonant heritage jewellery commercial celebrating heirloom treasures passed down across generations.",
-    "client": "Royal Jewels",
+    "desc": "Commercial for Abhi Eggs capturing morning breakfast warmth, healthy family nutrition, and natural dining lighting.",
+    "client": "Abhi Eggs",
     "agency": "Aura Communications",
     "camera": "ARRI Alexa Classic",
     "lens": "Zeiss Ultra Primes",
@@ -184,30 +184,30 @@ const FEATURED_PROJECTS = [
   },
   {
     "id": "tvc-11",
-    "title": "Loreal Hair Care \u2014 Salon Volume & Shine",
-    "category": "Fashion & Beauty",
-    "discipline": "Fashion & Beauty",
+    "title": "Avon Cycles — Now It's Time to Bring the Real Game On",
+    "category": "Sports TVC",
+    "discipline": "Sports & Action",
     "year": "2023",
-    "cover": "assets/tvc/tvc-11-loreal-hai-hair.jpg",
-    "video": "assets/tvc/tvc-11-loreal-hai-hair.mp4",
-    "desc": "Luminous beauty lighting, high-speed slow-motion hair toss dynamics, and specular bounce reflections.",
-    "client": "L'Or\u00e9al Professional",
-    "agency": "Publicis Groupe",
-    "camera": "Phantom Flex 4K",
-    "lens": "Cooke S4/i",
-    "format": "16:9 Widescreen",
+    "cover": "assets/tvc/tvc-11-now-its-time-to-bring-the-real-game-on.jpg",
+    "video": "assets/tvc/tvc-11-now-its-time-to-bring-the-real-game-on.mp4",
+    "desc": "High-octane cycling commercial featuring dynamic motion tracking, intense athlete performance, and stadium lighting.",
+    "client": "Avon Cycles",
+    "agency": "Leo Burnett India",
+    "camera": "Sony FX9 High Speed",
+    "lens": "Canon K35 Primes",
+    "format": "16:9 Cinema",
     "role": "Director of Photography"
   },
   {
     "id": "tvc-12",
-    "title": "Namishree \u2014 Walk In The Clouds Luxury",
-    "category": "Architecture",
-    "discipline": "Architecture",
+    "title": "Reel 1 Introduction — Brand Film Showcase",
+    "category": "Commercial TVC",
+    "discipline": "Commercial",
     "year": "2022",
-    "cover": "assets/tvc/tvc-12-namishree-walk-in-the-clouds.jpg",
-    "video": "assets/tvc/tvc-12-namishree-walk-in-the-clouds.mov",
-    "desc": "Luxury high-rise residential film moving through skydeck infinity pools, glass atriums, and sunset cloudscapes.",
-    "client": "Namishree Infrastructure",
+    "cover": "assets/tvc/tvc-12-reel-1-introduction-.jpg",
+    "video": "assets/tvc/tvc-12-reel-1-introduction-.mp4",
+    "desc": "Cinematic commercial showcase capturing refined lighting, evocative portraits, and clean visual rhythm.",
+    "client": "Brand Studio",
     "agency": "Urban Spaces",
     "camera": "ARRI Alexa Mini",
     "lens": "Zeiss CP.3 Primes",
@@ -216,14 +216,14 @@ const FEATURED_PROJECTS = [
   },
   {
     "id": "tvc-13",
-    "title": "Prakruti Avenues \u2014 Coastal Green Horizons",
+    "title": "ST Main — Corporate Architecture & Spaces",
     "category": "Architecture",
     "discipline": "Architecture",
     "year": "2019",
-    "cover": "assets/tvc/tvc-13-prakruti-avenues.jpg",
-    "video": "assets/tvc/tvc-13-prakruti-avenues.mp4",
-    "desc": "Breathtaking landscape cinematography charting sprawling eco-townships, morning mist, and open horizons.",
-    "client": "Prakruti Avenues",
+    "cover": "assets/tvc/tvc-13-st-main-j10.jpg",
+    "video": "assets/tvc/tvc-13-st-main-j10.mp4",
+    "desc": "Modern corporate architecture study with clean linear geometry, natural glass facade reflections, and interior depth.",
+    "client": "ST Main Infrastructure",
     "agency": "EcoVision Studios",
     "camera": "Sony FS7",
     "lens": "Fujinon MK Zoom",
@@ -1675,15 +1675,15 @@ function initScrollHeader() {
 function updateDynamicCounts() {
   const stillsDesc = document.getElementById("gatewayStillsDesc");
   if (stillsDesc && typeof ARCHIVE_PHOTOS !== "undefined") {
-    stillsDesc.textContent = `${ARCHIVE_PHOTOS.length} curated high-resolution master stills across fashion, spaces, food & product.`;
+    stillsDesc.textContent = `${ARCHIVE_PHOTOS.length} curated stills across fashion, spaces, food and product.`;
   }
   const reelsDesc = document.getElementById("gatewayReelsDesc");
-  if (reelsDesc && typeof SHORTS !== "undefined") {
-    reelsDesc.textContent = `${SHORTS.length} native 9:16 vertical cuts for fashion, food and brand campaigns.`;
+  if (reelsDesc) {
+    reelsDesc.textContent = "Native 9:16 cuts for fashion, food and brand campaigns.";
   }
   const filmsDesc = document.getElementById("gatewayFilmsDesc");
-  if (filmsDesc && typeof FEATURED_PROJECTS !== "undefined") {
-    filmsDesc.textContent = `${FEATURED_PROJECTS.length} commercial TVCs across fashion, food, sports and real estate.`;
+  if (filmsDesc) {
+    filmsDesc.textContent = "TVCs and brand films across fashion, food, sport and architecture.";
   }
 }
 

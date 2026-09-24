@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Still Photography Archive — Charan Golkonda | Fashion & Architecture</title>
-  <meta name="description" content="High-resolution editorial fashion, architectural spaces, culinary, and product photography by Charan Golkonda.">
+  <title>Still Photography Archive Charan Golkonda | Fashion & Architecture</title>
+  <meta name="description" content="High-resolution editorial fashion, architectural, culinary and product photography by Charan Golkonda.">
   
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <!-- Fonts -->
@@ -58,17 +58,13 @@
   <main class="container" style="padding-top: var(--band-hero); padding-bottom: var(--band-y);">
     <!-- PAGE HEADER -->
     <div class="section-header">
-      <div class="section-eyebrow">STILL PHOTOGRAPHY ARCHIVE // HIGH-RESOLUTION</div>
+      <div class="section-eyebrow">STILLS ACROSS EVERY GENRE</div>
       <div class="section-title-row">
         <div>
-          <h1 class="section-title">EDITORIAL & SPATIAL STILLS</h1>
+          <h1 class="section-title">PHOTOGRAPHY</h1>
           <p class="section-desc">
-            High-fashion editorial portraiture, architectural structures, fine culinary compositions, and minimalist studio product studies. Curated for gallery exhibition and high-end print lookbooks.
+            Fashion, food, product and architectural stills each shot with the technique that genre actually demands, not one style stretched over everything.
           </p>
-        </div>
-        <div class="mono" id="totalStillsBadge" style="font-size: 0.76rem; color: var(--text-dim); text-align: right;">
-          TOTAL STILLS: 278 CURATED FRAMES<br>
-          EXPANDED BEHANCE & PORTFOLIO ARCHIVE
         </div>
       </div>
     </div>
@@ -95,7 +91,7 @@
         <div class="footer-col">
           <h4 style="font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 10px;">CHARAN GOLKONDA</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 380px; line-height: 1.6;">
-            Director of Photography and commercial photographer with 8 years of experience across TVCs, fashion, food and architecture. Based in Hyderabad, available to travel.
+            I shoot Director of Photography work across TVC, fashion, food and architecture. Self-taught, format by format. Based in Hyderabad, available to travel.
           </p>
         </div>
         <div class="footer-col">
@@ -130,7 +126,6 @@
       </div>
       <div class="footer-bottom-bar">
         <div>&copy; 2026 CHARAN GOLKONDA. ALL RIGHTS RESERVED.</div>
-        <div>COORDINATES: 17.3850&deg; N, 78.4867&deg; E &bull; HYDERABAD, INDIA</div>
         <div>DOP &bull; HYDERABAD, INDIA</div>
       </div>
     </div>
@@ -164,7 +159,8 @@
     <div class="inquiry-dialog">
       <button class="lightbox-close-btn" id="inquiryClose" aria-label="Close dialog">&times;</button>
       <div class="section-eyebrow">GET IN TOUCH</div>
-      <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 6px;">LET'S WORK TOGETHER</h3>
+      <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 6px;">LET'S SHOOT SOMETHING</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">Whatever the format — TVC, editorial, food, architecture or social — tell me about your project and I'll get back to you within a day.</p>
       <form class="inquiry-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleInquirySubmit(event)">
         <input type="hidden" name="form-name" value="inquiry">
         <p style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
@@ -218,11 +214,6 @@
         else if (cat.includes("food") || cat.includes("culinary")) counts.food++;
         else if (cat.includes("product") || cat.includes("packag")) counts.product++;
       });
-
-      const totalBadge = document.getElementById("totalStillsBadge");
-      if (totalBadge) {
-        totalBadge.innerHTML = `TOTAL STILLS: ${counts.all} CURATED FRAMES<br>EXPANDED BEHANCE &amp; PORTFOLIO ARCHIVE`;
-      }
 
       const btnAll = document.querySelector('#photoFilters .tab-btn[data-filter="All"]');
       const btnFashion = document.querySelector('#photoFilters .tab-btn[data-filter="Fashion"]');
