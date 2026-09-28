@@ -507,12 +507,84 @@ button {
   }
 }
 
+/* ── Hero Bottom Watch Showreel Button ── */
+.hero-showreel-bottom {
+  position: absolute;
+  bottom: clamp(62px, 9.5vh, 92px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.hero-showreel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(14, 18, 23, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--text);
+  border: 1px solid rgba(234, 160, 54, 0.45);
+  padding: 11px 24px 11px 16px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(234, 160, 54, 0.15);
+}
+
+.hero-showreel-btn:hover {
+  background: var(--amber);
+  color: #06080a;
+  border-color: var(--amber);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 35px rgba(234, 160, 54, 0.5);
+}
+
+.showreel-play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--amber);
+  color: #06080a;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.showreel-play-icon svg {
+  margin-left: 2px;
+}
+
+.hero-showreel-btn:hover .showreel-play-icon {
+  background: #06080a;
+  color: var(--amber);
+}
+
 @media (max-width: 768px) {
   .hero-stage,
   .rowdy-hero-stage {
     width: 98vw;
     aspect-ratio: 1948 / 808;
     max-height: 75vh;
+  }
+  .hero-showreel-bottom {
+    bottom: 56px;
+  }
+  .hero-showreel-btn {
+    padding: 9px 18px 9px 14px;
+    font-size: 0.7rem;
+    gap: 8px;
   }
   .hero-scroll-cue,
   .rowdy-scroll-cue {
