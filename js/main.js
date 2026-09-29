@@ -14,6 +14,7 @@ const PROFILE = {
   coordinates: "17.3850° N, 78.4867° E",
   email: "charaneditzz@gmail.com",
   phone: "+91-7337597128",
+  whatsapp: "https://wa.me/917337597128",
   instagram: "https://www.instagram.com/charangolkonda/",
   linkedin: "https://www.linkedin.com/in/charangolkonda/",
   behance: "https://www.behance.net/gscphotographhy",
