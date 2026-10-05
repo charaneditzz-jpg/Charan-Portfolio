@@ -28,9 +28,28 @@ Because of the ~8 GB total high-bitrate video library, the recommended productio
 └──────────────┘  └──────────────┘
 ```
 
+## ⚡ Option 1: Vercel (Fast 1-Click Deployment from GitHub)
+
+Your repository is pre-configured with `vercel.json` (clean URLs, video streaming headers, redirects) and `api/contact.js` (serverless function for the inquiry form).
+
+### Step-by-Step Vercel Setup:
+1. Go to [vercel.com](https://vercel.com) and log in with your GitHub account (`charaneditzz-jpg`).
+2. Click **"Add New..."** &rarr; **"Project"**.
+3. Under **"Import Git Repository"**, select **`charaneditzz-jpg/Charan-Portfolio`**.
+4. Configure the Project Settings:
+   - **Framework Preset**: `Other` (or leave default detected)
+   - **Root Directory**: `./`
+   - **Build Command**: Leave empty / default
+   - **Output Directory**: Leave empty / default
+5. (Optional) In **Environment Variables**, add `RESEND_API_KEY` if you use Resend for emails. (If omitted, form inquiries forward automatically via FormSubmit to `charaneditzz@gmail.com`).
+6. Click **"Deploy"**.
+7. Vercel will build and deploy the site in ~30–45 seconds and give you a live URL like `https://charan-portfolio.vercel.app`.
+
+> **Note on Bandwidth**: Vercel's Hobby (free) tier includes 100 GB/month egress bandwidth. Because all video files have been web-compressed to &le; 11.9 MB, the site streams efficiently. If your visitor traffic surges past 100 GB in a month, consider Cloudflare Pages (Option 2) which offers unlimited egress bandwidth.
+
 ---
 
-## 🚀 Option 1: Cloudflare Pages + R2 (Recommended - 100% Free Tier, Fastest)
+## 🚀 Option 2: Cloudflare Pages (Recommended for Unlimited Bandwidth)
 
 ### Step 1: Register Domain & Free Cloudflare Account
 1. Create a free account at [cloudflare.com](https://dash.cloudflare.com/sign-up).
