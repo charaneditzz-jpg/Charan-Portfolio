@@ -1,17 +1,15 @@
-# Production Deployment & Custom Domain Guide: charangolkonda.com
+# Production Deployment & Custom Domain Guide: charandp.space
 
-This guide provides the exact steps to host your cinematography portfolio 24/7 permanently on the cloud and connect your custom domain **`charangolkonda.com`**.
+This guide provides the exact steps to host your cinematography portfolio 24/7 permanently on the cloud and connect your custom domain **`charandp.space`**.
 
 ---
 
 ## 🏗️ Architecture Overview
 
-Your portfolio features **high-definition commercial video reels, live hover TVC previews, and a 195 MB transparent showreel mask**.
-
-Because of the ~8 GB total high-bitrate video library, the recommended production setup is:
+Your portfolio features **high-definition commercial video reels, live hover TVC previews, and an optimized showreel mask**.
 
 ```
-[ Visitor: charangolkonda.com ]
+[ Visitor: charandp.space ]
                 │
                 ▼
       ┌──────────────────┐
